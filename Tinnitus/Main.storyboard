@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="g7W-ug-0iQ">
+    <device id="retina5_9" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Histogram-->
+        <scene sceneID="cWM-0L-LbY">
+            <objects>
+                <viewController title="Histogram" id="Qtr-pO-mIn" customClass="HistogramViewController" customModule="Tinnitus" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="OJR-4D-xdI">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1Df-bd-L9N" userLabel="Bar Chart" customClass="BarChart" customModule="Tinnitus" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="73" width="375" height="665"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="hvg-f0-Ci9"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Item 2" id="3gW-sT-52u" userLabel="Timeline"/>
+                    <connections>
+                        <outlet property="barChart" destination="1Df-bd-L9N" id="5BM-eF-jRx"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="DMt-z3-4KC" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1750" y="2375"/>
+        </scene>
+        <!--Map-->
+        <scene sceneID="KdR-GY-0ie">
+            <objects>
+                <viewController title="Map" id="AeI-QA-HhC" customClass="MapViewController" customModule="Tinnitus" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="vxd-em-IfX">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="0jf-JF-Uuo"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Map" id="5KX-kr-AP7" userLabel="Map"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="u2k-3o-der" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1751" y="1473"/>
+        </scene>
+        <!--Tab Bar Controller-->
+        <scene sceneID="RKe-g1-R0l">
+            <objects>
+                <tabBarController id="g7W-ug-0iQ" sceneMemberID="viewController">
+                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="K1J-ue-Pwj">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="49"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="AeI-QA-HhC" kind="relationship" relationship="viewControllers" id="vYg-xh-cqV"/>
+                        <segue destination="Qtr-pO-mIn" kind="relationship" relationship="viewControllers" id="kpG-ni-8tg"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ja7-og-mLx" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="436" y="1946"/>
+        </scene>
+    </scenes>
+</document>

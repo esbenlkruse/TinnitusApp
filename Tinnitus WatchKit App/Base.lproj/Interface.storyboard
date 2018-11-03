@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder.WatchKit.Storyboard" version="3.0" toolsVersion="14460.31" targetRuntime="watchKit" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="AgC-eL-Hgc">
+    <device id="watch40" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="watchOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBWatchKitPlugin" version="14460.16"/>
+    </dependencies>
+    <scenes>
+        <!--Tinnitus Interface Controller-->
+        <scene sceneID="aou-V4-d1y">
+            <objects>
+                <controller identifier="TinnitusInterfaceController" title="Tinnitus Interface Controller" id="AgC-eL-Hgc" customClass="TinnitusInterfaceController" customModule="Tinnitus_WatchKit_App_Extension">
+                    <items>
+                        <button width="1" alignment="left" verticalAlignment="center" title="Save" id="Ees-Ga-cak">
+                            <connections>
+                                <action selector="saveObservation" destination="AgC-eL-Hgc" id="SKB-jL-Shc"/>
+                            </connections>
+                        </button>
+                        <label height="108" alignment="left" text="Press save, when you are annoyed of Tinnitus" numberOfLines="3" id="Uk7-rl-eFC"/>
+                    </items>
+                </controller>
+            </objects>
+            <point key="canvasLocation" x="220" y="345"/>
+        </scene>
+        <!--Static Notification Interface Controller-->
+        <scene sceneID="AEw-b0-oYE">
+            <objects>
+                <notificationController id="YCC-NB-fut">
+                    <items>
+                        <label alignment="left" text="Alert Label" numberOfLines="0" id="IdU-wH-bcW"/>
+                    </items>
+                    <notificationCategory key="notificationCategory" identifier="myCategory" id="JfB-70-Muf"/>
+                    <connections>
+                        <outlet property="notificationAlertLabel" destination="IdU-wH-bcW" id="JKC-fr-R95"/>
+                        <segue destination="4sK-HA-Art" kind="relationship" relationship="dynamicNotificationInterface" id="kXh-Jw-8B1"/>
+                        <segue destination="eXb-UN-Cd0" kind="relationship" relationship="dynamicInteractiveNotificationInterface" id="mpB-YA-K8N"/>
+                    </connections>
+                </notificationController>
+            </objects>
+            <point key="canvasLocation" x="220" y="782"/>
+        </scene>
+        <!--Notification Controller-->
+        <scene sceneID="ZPc-GJ-vnh">
+            <objects>
+                <controller id="4sK-HA-Art" customClass="NotificationController" customModule="Tinnitus_WatchKit_App_Extension"/>
+            </objects>
+            <point key="canvasLocation" x="220" y="1161"/>
+        </scene>
+        <!--Notification Controller-->
+        <scene sceneID="Niz-AI-uX2">
+            <objects>
+                <controller id="eXb-UN-Cd0" customClass="NotificationController" customModule="Tinnitus_WatchKit_App_Extension"/>
+            </objects>
+            <point key="canvasLocation" x="583" y="782"/>
+        </scene>
+        <!--Observation Saved Controller-->
+        <scene sceneID="Ruq-XI-Vpx">
+            <objects>
+                <controller identifier="ObservationSavedController" title="Observation Saved Controller" id="NAx-6m-G9X" customClass="ObservationSavedController" customModule="Tinnitus_WatchKit_App_Extension">
+                    <items>
+                        <button width="1" alignment="left" verticalAlignment="center" title="Dismiss" id="uh4-z1-a4z">
+                            <connections>
+                                <segue destination="AgC-eL-Hgc" kind="modal" id="iNJ-FF-U7x"/>
+                            </connections>
+                        </button>
+                        <label height="107" alignment="left" text="Your observation is saved" numberOfLines="2" id="KNb-zn-6SM"/>
+                    </items>
+                </controller>
+            </objects>
+            <point key="canvasLocation" x="600" y="345"/>
+        </scene>
+        <!--Observation Not Saved Controller-->
+        <scene sceneID="NqY-D4-cva">
+            <objects>
+                <controller identifier="ObservationNotSavedController" title="Observation Not Saved Controller" id="36Y-VS-gDP" userLabel="Observation Not Saved Controller" customClass="ObservationNotSavedController" customModule="Tinnitus_WatchKit_App_Extension">
+                    <items>
+                        <button width="1" alignment="left" verticalAlignment="center" title="Try Again" id="bCj-qZ-kT8">
+                            <connections>
+                                <segue destination="AgC-eL-Hgc" kind="modal" id="9Zf-VI-WJn"/>
+                            </connections>
+                        </button>
+                        <label height="107" alignment="left" text="Your observation was not saved. Please try again." numberOfLines="3" id="6TA-Vw-Mlg"/>
+                    </items>
+                </controller>
+            </objects>
+            <point key="canvasLocation" x="220" y="-196"/>
+        </scene>
+    </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="9Zf-VI-WJn"/>
+    </inferredMetricsTieBreakers>
+</document>

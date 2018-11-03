@@ -1,0 +1,870 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		3D0724FC81CF47763C2FA15D /* Pods_Tinnitus_WatchKit_App_Extension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 704243B89FAB04C112358099 /* Pods_Tinnitus_WatchKit_App_Extension.framework */; };
+		560AE653B78D3EE839873DBB /* libPods-Tinnitus.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5583FD94F7B7CFE06F3063A1 /* libPods-Tinnitus.a */; };
+		B7BFCB5F323E05C2699B712D /* Pods_Tinnitus_WatchKit_App.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C905FE2C61DF5B882B589024 /* Pods_Tinnitus_WatchKit_App.framework */; };
+		F27E98862189DC63000D192E /* Interface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F27E98882189DC63000D192E /* Interface.storyboard */; };
+		F27E98892189DC98000D192E /* Interface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F27E98882189DC63000D192E /* Interface.storyboard */; };
+		F27E988B2189E05B000D192E /* TinnitusInterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F27E988A2189E05B000D192E /* TinnitusInterfaceController.swift */; };
+		F27E988D2189E99F000D192E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F27E988C2189E99F000D192E /* Assets.xcassets */; };
+		F27E988F2189F90B000D192E /* BarEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = F27E988E2189F90B000D192E /* BarEntry.swift */; };
+		F27E98912189F939000D192E /* BarChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = F27E98902189F939000D192E /* BarChart.swift */; };
+		F28852222189BCB000CE6F21 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = F28852182189BCB000CE6F21 /* GoogleService-Info.plist */; };
+		F28852232189BCB000CE6F21 /* HistogramViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F28852192189BCB000CE6F21 /* HistogramViewController.swift */; };
+		F28852242189BCB000CE6F21 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F288521A2189BCB000CE6F21 /* Main.storyboard */; };
+		F28852252189BCB000CE6F21 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F288521B2189BCB000CE6F21 /* MapViewController.swift */; };
+		F28852262189BCB000CE6F21 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F288521D2189BCB000CE6F21 /* LaunchScreen.storyboard */; };
+		F28852282189BCB000CE6F21 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F28852202189BCB000CE6F21 /* AppDelegate.swift */; };
+		F288525B2189BF3300CE6F21 /* Tinnitus WatchKit App Extension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = F288525A2189BF3300CE6F21 /* Tinnitus WatchKit App Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		F288526D2189BF3300CE6F21 /* Tinnitus WatchKit App.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = F288524E2189BF3100CE6F21 /* Tinnitus WatchKit App.app */; };
+		F28852852189BFE000CE6F21 /* ExtensionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F288527C2189BFE000CE6F21 /* ExtensionDelegate.swift */; };
+		F28852862189BFE000CE6F21 /* NotificationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F288527D2189BFE000CE6F21 /* NotificationController.swift */; };
+		F28852882189BFE000CE6F21 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F28852802189BFE000CE6F21 /* Assets.xcassets */; };
+		F28852892189BFE000CE6F21 /* ObservationSavedController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F28852812189BFE000CE6F21 /* ObservationSavedController.swift */; };
+		F288528A2189BFE000CE6F21 /* ObservationNotSavedController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F28852822189BFE000CE6F21 /* ObservationNotSavedController.swift */; };
+		F288528B2189BFE000CE6F21 /* PushNotificationPayload.apns in Resources */ = {isa = PBXBuildFile; fileRef = F28852832189BFE000CE6F21 /* PushNotificationPayload.apns */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		F288525C2189BF3300CE6F21 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 02B36AC61D190D7E00EA3A86 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = F28852592189BF3300CE6F21;
+			remoteInfo = "Tinnitus WatchKit App Extension";
+		};
+		F288526B2189BF3300CE6F21 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 02B36AC61D190D7E00EA3A86 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = F288524D2189BF3100CE6F21;
+			remoteInfo = "Tinnitus WatchKit App";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		F28852712189BF3300CE6F21 /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				F288525B2189BF3300CE6F21 /* Tinnitus WatchKit App Extension.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F28852752189BF3300CE6F21 /* Embed Watch Content */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "$(CONTENTS_FOLDER_PATH)/Watch";
+			dstSubfolderSpec = 16;
+			files = (
+				F288526D2189BF3300CE6F21 /* Tinnitus WatchKit App.app in Embed Watch Content */,
+			);
+			name = "Embed Watch Content";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		02B36ACE1D190D7E00EA3A86 /* Tinnitus.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Tinnitus.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		12568119456F67B6EDBC7365 /* Pods-Tinnitus WatchKit App.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Tinnitus WatchKit App.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Tinnitus WatchKit App/Pods-Tinnitus WatchKit App.debug.xcconfig"; sourceTree = "<group>"; };
+		140BD18A05C0889DC5C41E03 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		4676D22BE222EA3627E0E1C3 /* Pods-Tinnitus WatchKit App.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Tinnitus WatchKit App.release.xcconfig"; path = "Pods/Target Support Files/Pods-Tinnitus WatchKit App/Pods-Tinnitus WatchKit App.release.xcconfig"; sourceTree = "<group>"; };
+		5583FD94F7B7CFE06F3063A1 /* libPods-Tinnitus.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Tinnitus.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		687D319BC4D684C9E34FF934 /* Pods-Tinnitus.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Tinnitus.release.xcconfig"; path = "Pods/Target Support Files/Pods-Tinnitus/Pods-Tinnitus.release.xcconfig"; sourceTree = "<group>"; };
+		704243B89FAB04C112358099 /* Pods_Tinnitus_WatchKit_App_Extension.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Tinnitus_WatchKit_App_Extension.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		7CFCDAD8F720C2EDA7195AED /* Pods-Tinnitus.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Tinnitus.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Tinnitus/Pods-Tinnitus.debug.xcconfig"; sourceTree = "<group>"; };
+		7DDBF8DC68B04F2B33CFB347 /* libPods-SwiftDemoApp.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-SwiftDemoApp.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		B79D378B9EF18E17BBFC8BC0 /* Pods-Tinnitus WatchKit App Extension.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Tinnitus WatchKit App Extension.release.xcconfig"; path = "Pods/Target Support Files/Pods-Tinnitus WatchKit App Extension/Pods-Tinnitus WatchKit App Extension.release.xcconfig"; sourceTree = "<group>"; };
+		C905FE2C61DF5B882B589024 /* Pods_Tinnitus_WatchKit_App.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Tinnitus_WatchKit_App.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		F19CC2126FFA3BD5C027A0C4 /* Pods-Tinnitus WatchKit App Extension.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Tinnitus WatchKit App Extension.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Tinnitus WatchKit App Extension/Pods-Tinnitus WatchKit App Extension.debug.xcconfig"; sourceTree = "<group>"; };
+		F27E98872189DC63000D192E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Interface.storyboard; sourceTree = "<group>"; };
+		F27E988A2189E05B000D192E /* TinnitusInterfaceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TinnitusInterfaceController.swift; sourceTree = "<group>"; };
+		F27E988C2189E99F000D192E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		F27E988E2189F90B000D192E /* BarEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarEntry.swift; sourceTree = "<group>"; };
+		F27E98902189F939000D192E /* BarChart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarChart.swift; sourceTree = "<group>"; };
+		F28852182189BCB000CE6F21 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		F28852192189BCB000CE6F21 /* HistogramViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HistogramViewController.swift; sourceTree = "<group>"; };
+		F288521A2189BCB000CE6F21 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+		F288521B2189BCB000CE6F21 /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
+		F288521C2189BCB000CE6F21 /* Tinnitus.entitlements */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.entitlements; path = Tinnitus.entitlements; sourceTree = "<group>"; };
+		F288521D2189BCB000CE6F21 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
+		F288521E2189BCB000CE6F21 /* Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Bridging-Header.h"; sourceTree = "<group>"; };
+		F288521F2189BCB000CE6F21 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F28852202189BCB000CE6F21 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		F288524E2189BF3100CE6F21 /* Tinnitus WatchKit App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Tinnitus WatchKit App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		F288525A2189BF3300CE6F21 /* Tinnitus WatchKit App Extension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "Tinnitus WatchKit App Extension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
+		F28852762189BFC900CE6F21 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F28852782189BFC900CE6F21 /* Tinnitus WatchKit App.entitlements */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.entitlements; path = "Tinnitus WatchKit App.entitlements"; sourceTree = "<group>"; };
+		F288527C2189BFE000CE6F21 /* ExtensionDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExtensionDelegate.swift; sourceTree = "<group>"; };
+		F288527D2189BFE000CE6F21 /* NotificationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationController.swift; sourceTree = "<group>"; };
+		F288527E2189BFE000CE6F21 /* Tinnitus WatchKit Extension.entitlements */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.entitlements; path = "Tinnitus WatchKit Extension.entitlements"; sourceTree = "<group>"; };
+		F288527F2189BFE000CE6F21 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F28852802189BFE000CE6F21 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		F28852812189BFE000CE6F21 /* ObservationSavedController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ObservationSavedController.swift; sourceTree = "<group>"; };
+		F28852822189BFE000CE6F21 /* ObservationNotSavedController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ObservationNotSavedController.swift; sourceTree = "<group>"; };
+		F28852832189BFE000CE6F21 /* PushNotificationPayload.apns */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = PushNotificationPayload.apns; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		02B36ACB1D190D7E00EA3A86 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				560AE653B78D3EE839873DBB /* libPods-Tinnitus.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D4585AA567BDB23BD5C206F5 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B7BFCB5F323E05C2699B712D /* Pods_Tinnitus_WatchKit_App.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F28852572189BF3300CE6F21 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3D0724FC81CF47763C2FA15D /* Pods_Tinnitus_WatchKit_App_Extension.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		02B36AC51D190D7E00EA3A86 = {
+			isa = PBXGroup;
+			children = (
+				02B36AD01D190D7E00EA3A86 /* Tinnitus */,
+				F288524F2189BF3100CE6F21 /* Tinnitus WatchKit App */,
+				F288525E2189BF3300CE6F21 /* Tinnitus WatchKit App Extension */,
+				02B36ACF1D190D7E00EA3A86 /* Products */,
+				7D767BECD9579EA16A446213 /* Pods */,
+				A360DA8D5E21EAEB15D13377 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		02B36ACF1D190D7E00EA3A86 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				02B36ACE1D190D7E00EA3A86 /* Tinnitus.app */,
+				F288524E2189BF3100CE6F21 /* Tinnitus WatchKit App.app */,
+				F288525A2189BF3300CE6F21 /* Tinnitus WatchKit App Extension.appex */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		02B36AD01D190D7E00EA3A86 /* Tinnitus */ = {
+			isa = PBXGroup;
+			children = (
+				F27E988C2189E99F000D192E /* Assets.xcassets */,
+				F28852202189BCB000CE6F21 /* AppDelegate.swift */,
+				F288521E2189BCB000CE6F21 /* Bridging-Header.h */,
+				F28852182189BCB000CE6F21 /* GoogleService-Info.plist */,
+				F28852192189BCB000CE6F21 /* HistogramViewController.swift */,
+				F288521F2189BCB000CE6F21 /* Info.plist */,
+				F288521D2189BCB000CE6F21 /* LaunchScreen.storyboard */,
+				F288521A2189BCB000CE6F21 /* Main.storyboard */,
+				F288521B2189BCB000CE6F21 /* MapViewController.swift */,
+				F288521C2189BCB000CE6F21 /* Tinnitus.entitlements */,
+				F27E988E2189F90B000D192E /* BarEntry.swift */,
+				F27E98902189F939000D192E /* BarChart.swift */,
+			);
+			path = Tinnitus;
+			sourceTree = "<group>";
+		};
+		7D767BECD9579EA16A446213 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				7CFCDAD8F720C2EDA7195AED /* Pods-Tinnitus.debug.xcconfig */,
+				687D319BC4D684C9E34FF934 /* Pods-Tinnitus.release.xcconfig */,
+				12568119456F67B6EDBC7365 /* Pods-Tinnitus WatchKit App.debug.xcconfig */,
+				4676D22BE222EA3627E0E1C3 /* Pods-Tinnitus WatchKit App.release.xcconfig */,
+				F19CC2126FFA3BD5C027A0C4 /* Pods-Tinnitus WatchKit App Extension.debug.xcconfig */,
+				B79D378B9EF18E17BBFC8BC0 /* Pods-Tinnitus WatchKit App Extension.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		A360DA8D5E21EAEB15D13377 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				140BD18A05C0889DC5C41E03 /* libPods.a */,
+				7DDBF8DC68B04F2B33CFB347 /* libPods-SwiftDemoApp.a */,
+				5583FD94F7B7CFE06F3063A1 /* libPods-Tinnitus.a */,
+				C905FE2C61DF5B882B589024 /* Pods_Tinnitus_WatchKit_App.framework */,
+				704243B89FAB04C112358099 /* Pods_Tinnitus_WatchKit_App_Extension.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		F288524F2189BF3100CE6F21 /* Tinnitus WatchKit App */ = {
+			isa = PBXGroup;
+			children = (
+				F28852762189BFC900CE6F21 /* Info.plist */,
+				F27E98882189DC63000D192E /* Interface.storyboard */,
+				F28852782189BFC900CE6F21 /* Tinnitus WatchKit App.entitlements */,
+			);
+			path = "Tinnitus WatchKit App";
+			sourceTree = "<group>";
+		};
+		F288525E2189BF3300CE6F21 /* Tinnitus WatchKit App Extension */ = {
+			isa = PBXGroup;
+			children = (
+				F28852802189BFE000CE6F21 /* Assets.xcassets */,
+				F288527C2189BFE000CE6F21 /* ExtensionDelegate.swift */,
+				F288527F2189BFE000CE6F21 /* Info.plist */,
+				F288527D2189BFE000CE6F21 /* NotificationController.swift */,
+				F28852822189BFE000CE6F21 /* ObservationNotSavedController.swift */,
+				F28852812189BFE000CE6F21 /* ObservationSavedController.swift */,
+				F28852832189BFE000CE6F21 /* PushNotificationPayload.apns */,
+				F288527E2189BFE000CE6F21 /* Tinnitus WatchKit Extension.entitlements */,
+				F27E988A2189E05B000D192E /* TinnitusInterfaceController.swift */,
+			);
+			path = "Tinnitus WatchKit App Extension";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		02B36ACD1D190D7E00EA3A86 /* Tinnitus */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 02B36AE01D190D7E00EA3A86 /* Build configuration list for PBXNativeTarget "Tinnitus" */;
+			buildPhases = (
+				530FFABA37157F6DC6FF2695 /* [CP] Check Pods Manifest.lock */,
+				02B36ACA1D190D7E00EA3A86 /* Sources */,
+				02B36ACB1D190D7E00EA3A86 /* Frameworks */,
+				02B36ACC1D190D7E00EA3A86 /* Resources */,
+				6DB2DE912035DC43C1A4FD9E /* [CP] Copy Pods Resources */,
+				F28852752189BF3300CE6F21 /* Embed Watch Content */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				F288526C2189BF3300CE6F21 /* PBXTargetDependency */,
+			);
+			name = Tinnitus;
+			productName = SwiftDemoApp;
+			productReference = 02B36ACE1D190D7E00EA3A86 /* Tinnitus.app */;
+			productType = "com.apple.product-type.application";
+		};
+		F288524D2189BF3100CE6F21 /* Tinnitus WatchKit App */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F28852722189BF3300CE6F21 /* Build configuration list for PBXNativeTarget "Tinnitus WatchKit App" */;
+			buildPhases = (
+				59BCEAC62B35E9AE659981F3 /* [CP] Check Pods Manifest.lock */,
+				F288524C2189BF3100CE6F21 /* Resources */,
+				F28852712189BF3300CE6F21 /* Embed App Extensions */,
+				D4585AA567BDB23BD5C206F5 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				F288525D2189BF3300CE6F21 /* PBXTargetDependency */,
+			);
+			name = "Tinnitus WatchKit App";
+			productName = "Tinnitus WatchKit App";
+			productReference = F288524E2189BF3100CE6F21 /* Tinnitus WatchKit App.app */;
+			productType = "com.apple.product-type.application.watchapp2";
+		};
+		F28852592189BF3300CE6F21 /* Tinnitus WatchKit App Extension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F288526E2189BF3300CE6F21 /* Build configuration list for PBXNativeTarget "Tinnitus WatchKit App Extension" */;
+			buildPhases = (
+				35D4E8C72196FCA32DF7BC2F /* [CP] Check Pods Manifest.lock */,
+				F28852562189BF3300CE6F21 /* Sources */,
+				F28852572189BF3300CE6F21 /* Frameworks */,
+				F28852582189BF3300CE6F21 /* Resources */,
+				1434560B4A0444AEF9969AF0 /* [CP] Embed Pods Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Tinnitus WatchKit App Extension";
+			productName = "Tinnitus WatchKit App Extension";
+			productReference = F288525A2189BF3300CE6F21 /* Tinnitus WatchKit App Extension.appex */;
+			productType = "com.apple.product-type.watchkit2-extension";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		02B36AC61D190D7E00EA3A86 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1010;
+				LastUpgradeCheck = 1010;
+				ORGANIZATIONNAME = Google;
+				TargetAttributes = {
+					02B36ACD1D190D7E00EA3A86 = {
+						CreatedOnToolsVersion = 7.2.1;
+						DevelopmentTeam = CX22QHVDXS;
+						LastSwiftMigration = 0810;
+					};
+					F288524D2189BF3100CE6F21 = {
+						CreatedOnToolsVersion = 10.1;
+						DevelopmentTeam = CX22QHVDXS;
+						ProvisioningStyle = Automatic;
+					};
+					F28852592189BF3300CE6F21 = {
+						CreatedOnToolsVersion = 10.1;
+						DevelopmentTeam = CX22QHVDXS;
+						LastSwiftMigration = 1010;
+						ProvisioningStyle = Automatic;
+					};
+				};
+			};
+			buildConfigurationList = 02B36AC91D190D7E00EA3A86 /* Build configuration list for PBXProject "Tinnitus" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 02B36AC51D190D7E00EA3A86;
+			productRefGroup = 02B36ACF1D190D7E00EA3A86 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				02B36ACD1D190D7E00EA3A86 /* Tinnitus */,
+				F288524D2189BF3100CE6F21 /* Tinnitus WatchKit App */,
+				F28852592189BF3300CE6F21 /* Tinnitus WatchKit App Extension */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		02B36ACC1D190D7E00EA3A86 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F28852242189BCB000CE6F21 /* Main.storyboard in Resources */,
+				F28852222189BCB000CE6F21 /* GoogleService-Info.plist in Resources */,
+				F27E988D2189E99F000D192E /* Assets.xcassets in Resources */,
+				F28852262189BCB000CE6F21 /* LaunchScreen.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F288524C2189BF3100CE6F21 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F27E98892189DC98000D192E /* Interface.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F28852582189BF3300CE6F21 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F28852882189BFE000CE6F21 /* Assets.xcassets in Resources */,
+				F27E98862189DC63000D192E /* Interface.storyboard in Resources */,
+				F288528B2189BFE000CE6F21 /* PushNotificationPayload.apns in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		1434560B4A0444AEF9969AF0 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-Tinnitus WatchKit App Extension/Pods-Tinnitus WatchKit App Extension-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Alamofire-framework/Alamofire.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Tinnitus WatchKit App Extension/Pods-Tinnitus WatchKit App Extension-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		35D4E8C72196FCA32DF7BC2F /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Tinnitus WatchKit App Extension-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		530FFABA37157F6DC6FF2695 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Tinnitus-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		59BCEAC62B35E9AE659981F3 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Tinnitus WatchKit App-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		6DB2DE912035DC43C1A4FD9E /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-Tinnitus/Pods-Tinnitus-resources.sh",
+				"${PODS_ROOT}/GoogleMaps/Maps/Frameworks/GoogleMaps.framework/Resources/GoogleMaps.bundle",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/GoogleMaps.bundle",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Tinnitus/Pods-Tinnitus-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		02B36ACA1D190D7E00EA3A86 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F27E988F2189F90B000D192E /* BarEntry.swift in Sources */,
+				F28852282189BCB000CE6F21 /* AppDelegate.swift in Sources */,
+				F28852232189BCB000CE6F21 /* HistogramViewController.swift in Sources */,
+				F27E98912189F939000D192E /* BarChart.swift in Sources */,
+				F28852252189BCB000CE6F21 /* MapViewController.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F28852562189BF3300CE6F21 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F28852892189BFE000CE6F21 /* ObservationSavedController.swift in Sources */,
+				F27E988B2189E05B000D192E /* TinnitusInterfaceController.swift in Sources */,
+				F28852862189BFE000CE6F21 /* NotificationController.swift in Sources */,
+				F288528A2189BFE000CE6F21 /* ObservationNotSavedController.swift in Sources */,
+				F28852852189BFE000CE6F21 /* ExtensionDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		F288525D2189BF3300CE6F21 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = F28852592189BF3300CE6F21 /* Tinnitus WatchKit App Extension */;
+			targetProxy = F288525C2189BF3300CE6F21 /* PBXContainerItemProxy */;
+		};
+		F288526C2189BF3300CE6F21 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = F288524D2189BF3100CE6F21 /* Tinnitus WatchKit App */;
+			targetProxy = F288526B2189BF3300CE6F21 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		F27E98882189DC63000D192E /* Interface.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F27E98872189DC63000D192E /* Base */,
+			);
+			name = Interface.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		02B36ADE1D190D7E00EA3A86 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		02B36ADF1D190D7E00EA3A86 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		02B36AE11D190D7E00EA3A86 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7CFCDAD8F720C2EDA7195AED /* Pods-Tinnitus.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				DEVELOPMENT_TEAM = CX22QHVDXS;
+				INFOPLIST_FILE = "$(SRCROOT)/Tinnitus/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = dtuelk.Tinnitus;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Tinnitus/Bridging-Header.h";
+				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Debug;
+		};
+		02B36AE21D190D7E00EA3A86 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 687D319BC4D684C9E34FF934 /* Pods-Tinnitus.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				DEVELOPMENT_TEAM = CX22QHVDXS;
+				INFOPLIST_FILE = "$(SRCROOT)/Tinnitus/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = dtuelk.Tinnitus;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Tinnitus/Bridging-Header.h";
+				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Release;
+		};
+		F288526F2189BF3300CE6F21 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = F19CC2126FFA3BD5C027A0C4 /* Pods-Tinnitus WatchKit App Extension.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = CX22QHVDXS;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				INFOPLIST_FILE = "$(SRCROOT)/Tinnitus WatchKit App Extension/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = dtuelk.Tinnitus.watchkitapp.watchkitextension;
+				PRODUCT_NAME = "${TARGET_NAME}";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OBJC_BRIDGING_HEADER = "";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 4.3;
+			};
+			name = Debug;
+		};
+		F28852702189BF3300CE6F21 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = B79D378B9EF18E17BBFC8BC0 /* Pods-Tinnitus WatchKit App Extension.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = CX22QHVDXS;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				INFOPLIST_FILE = "$(SRCROOT)/Tinnitus WatchKit App Extension/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = dtuelk.Tinnitus.watchkitapp.watchkitextension;
+				PRODUCT_NAME = "${TARGET_NAME}";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = "";
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 4.3;
+			};
+			name = Release;
+		};
+		F28852732189BF3300CE6F21 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 12568119456F67B6EDBC7365 /* Pods-Tinnitus WatchKit App.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = CX22QHVDXS;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				IBSC_MODULE = Tinnitus_WatchKit_App_Extension;
+				INFOPLIST_FILE = "Tinnitus WatchKit App/Info.plist";
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = dtuelk.Tinnitus.watchkitapp;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 4.3;
+			};
+			name = Debug;
+		};
+		F28852742189BF3300CE6F21 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 4676D22BE222EA3627E0E1C3 /* Pods-Tinnitus WatchKit App.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = CX22QHVDXS;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				IBSC_MODULE = Tinnitus_WatchKit_App_Extension;
+				INFOPLIST_FILE = "Tinnitus WatchKit App/Info.plist";
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = dtuelk.Tinnitus.watchkitapp;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 4.3;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		02B36AC91D190D7E00EA3A86 /* Build configuration list for PBXProject "Tinnitus" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				02B36ADE1D190D7E00EA3A86 /* Debug */,
+				02B36ADF1D190D7E00EA3A86 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		02B36AE01D190D7E00EA3A86 /* Build configuration list for PBXNativeTarget "Tinnitus" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				02B36AE11D190D7E00EA3A86 /* Debug */,
+				02B36AE21D190D7E00EA3A86 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		F288526E2189BF3300CE6F21 /* Build configuration list for PBXNativeTarget "Tinnitus WatchKit App Extension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F288526F2189BF3300CE6F21 /* Debug */,
+				F28852702189BF3300CE6F21 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		F28852722189BF3300CE6F21 /* Build configuration list for PBXNativeTarget "Tinnitus WatchKit App" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F28852732189BF3300CE6F21 /* Debug */,
+				F28852742189BF3300CE6F21 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 02B36AC61D190D7E00EA3A86 /* Project object */;
+}
