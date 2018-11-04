@@ -4,6 +4,10 @@
 <dict>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>$(DEVELOPMENT_LANGUAGE)</string>
+	<key>Privacy – Location Always Usage Description : I need location</key>
+	<string>We need to know your current position, to monitorize tinnitus.</string>
+	<key>Privacy – Location When In Use Usage Description : I need location</key>
+	<string>We need to know your current position, to monitorize tinnitus.</string>
 	<key>CFBundleDisplayName</key>
 	<string>Tinnitus WatchKit Extension</string>
 	<key>CFBundleExecutable</key>

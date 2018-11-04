@@ -13,6 +13,8 @@ import Alamofire
 
 class TinnitusInterfaceController: WKInterfaceController {
     
+    // MARK: Interface Controller
+    
     override func awake(withContext context: Any?) {
         super.awake(withContext: context)
         
@@ -43,11 +45,20 @@ class TinnitusInterfaceController: WKInterfaceController {
         ]
         
         // Post data to firebase database
-        Alamofire.request(firebaseUrl, method: .post, parameters: parameters, encoding: JSONEncoding.default)
+        let request = Alamofire.request(firebaseUrl, method: .post, parameters: parameters, encoding: JSONEncoding.default)
+        
+        
+        request.responseData { response in
+            switch response.result {
+            case .success:
+                self.presentController(withName: "ObservationSavedController", context: [])
+            case .failure:
+                self.presentController(withName: "ObservationNotSavedController", context: [])
+            }
+        }
     }
     
     @IBAction func saveObservation() {
         saveToFirebase()
-        presentController(withName: "ObservationSavedController", context: [])
     }
 }
