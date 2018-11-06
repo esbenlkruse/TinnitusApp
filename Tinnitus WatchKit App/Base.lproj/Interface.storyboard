@@ -12,15 +12,18 @@
         <!--Tinnitus Interface Controller-->
         <scene sceneID="aou-V4-d1y">
             <objects>
-                <controller identifier="TinnitusInterfaceController" title="Tinnitus Interface Controller" id="AgC-eL-Hgc" customClass="TinnitusInterfaceController" customModule="Tinnitus_WatchKit_App_Extension">
+                <controller identifier="TinnitusInterfaceController" title="Tinnitus Interface Controller" id="AgC-eL-Hgc" customClass="RequestLocationInterfaceController" customModule="Tinnitus_WatchKit_App_Extension">
                     <items>
                         <button width="1" alignment="left" verticalAlignment="center" title="Save" id="Ees-Ga-cak">
                             <connections>
-                                <action selector="saveObservation" destination="AgC-eL-Hgc" id="SKB-jL-Shc"/>
+                                <action selector="requestLocation" destination="AgC-eL-Hgc" id="ZCx-hV-Ppa"/>
                             </connections>
                         </button>
                         <label height="108" alignment="left" text="Press save, when you are annoyed of Tinnitus" numberOfLines="3" id="Uk7-rl-eFC"/>
                     </items>
+                    <connections>
+                        <outlet property="requestLocationButton" destination="Ees-Ga-cak" id="jAU-3F-z3J"/>
+                    </connections>
                 </controller>
             </objects>
             <point key="canvasLocation" x="220" y="345"/>

@@ -64,6 +64,10 @@ class RequestLocationInterfaceController: WKInterfaceController, CLLocationManag
         return NSLocalizedString("Cancel", comment: "Cancel the current action")
     }
     
+    var savingTitle: String {
+        return NSLocalizedString("Saving...", comment: "Saving the current action")
+    }
+    
     var deniedText: String {
         return NSLocalizedString("Location authorization denied.", comment: "Text to indicate authorization status is .Denied")
     }
@@ -110,7 +114,6 @@ class RequestLocationInterfaceController: WKInterfaceController, CLLocationManag
         guard !isRequestingLocation else {
             manager.stopUpdatingLocation()
             isRequestingLocation = false
-            //requestLocationButton.setTitle(requestLocationTitle)
             
             return
         }
@@ -120,23 +123,21 @@ class RequestLocationInterfaceController: WKInterfaceController, CLLocationManag
         switch authorizationStatus {
         case .notDetermined:
             isRequestingLocation = true
-            requestLocationButton.setTitle(cancelTitle)
+            requestLocationButton.setTitle(savingTitle)
             manager.requestWhenInUseAuthorization()
             
         case .authorizedWhenInUse:
             isRequestingLocation = true
-            requestLocationButton.setTitle(cancelTitle)
+            requestLocationButton.setTitle(savingTitle)
             manager.requestLocation()
             //saveToFirebase()
             
             
         case .denied:
             errorLabel.setText(deniedText)
-           // restartTimers()
             
         default:
             errorLabel.setText(unexpectedText)
-           // restartTimers()
         }
     }
     
@@ -184,11 +185,7 @@ class RequestLocationInterfaceController: WKInterfaceController, CLLocationManag
             //self.longitudeLabel.setText(String(lastLocationCoordinate.latitude))
             
             self.saveToFirebase(lat: String(lastLocationCoordinate.latitude), lon: String(lastLocationCoordinate.longitude))
-           // self.isRequestingLocation = false
-            
-            //self.requestLocationButton.setTitle(self.requestLocationTitle)
-            
-           // self.restartTimers()
+        
         }
     }
     
@@ -200,10 +197,7 @@ class RequestLocationInterfaceController: WKInterfaceController, CLLocationManag
             self.errorLabel.setText(String(error.localizedDescription))
             
             self.isRequestingLocation = false
-            
-            //self.requestLocationButton.setTitle(self.requestLocationTitle)
-            
-            //self.restartTimers()
+
         }
     }
     
@@ -222,14 +216,12 @@ class RequestLocationInterfaceController: WKInterfaceController, CLLocationManag
             case .denied:
                 self.errorLabel.setText(self.deniedText)
                 self.isRequestingLocation = false
-                //self.requestLocationButton.setTitle(self.requestLocationTitle)
-                //self.restartTimers()
+
                 
             default:
-                //self.errorLabel.setText(self.unexpectedText)
+
                 self.isRequestingLocation = false
-                //self.requestLocationButton.setTitle(self.requestLocationTitle)
-                //self.restartTimers()
+
             }
         }
     }
@@ -252,32 +244,5 @@ class RequestLocationInterfaceController: WKInterfaceController, CLLocationManag
             self.errorLabel.setText(self.errorResetText)
         }
     }*/
-    
-    /**
-     Restarts the Timer and the WKInterface timer by stopping / invalidating
-     them, then starting them with a 5 second timeout.
-     */
-   /* func restartTimers() {
-        stopDisplayTimer()
-        
-        interfaceResetTimer.invalidate()
-        
-        interfaceResetTimer = Timer.scheduledTimer(timeInterval: 5, target: self, selector: #selector(RequestLocationInterfaceController.resetInterface), userInfo: [:], repeats: false)
-        
-        let fiveSecondDelay = NSDate(timeIntervalSinceNow: 5)
-        
-        displayTimer.setDate(fiveSecondDelay as Date)
-        
-        displayTimer.start()
-    }
-    */
-    /**
-     Stops the display timer.
-     */
-   /* func stopDisplayTimer() {
-        let now = NSDate()
-        displayTimer.setDate(now as Date)
-        
-        displayTimer.stop()
-    } */
+
 }

@@ -30,7 +30,7 @@ class TinnitusInterfaceController: WKInterfaceController {
         // This method is called when watch view controller is no longer visible
         super.didDeactivate()
     }
-    
+    /*
     func saveToFirebase() {
         let firebaseUrl = "https://tinnitus-dfcd4.firebaseio.com/test-observations.json"
         
@@ -60,5 +60,5 @@ class TinnitusInterfaceController: WKInterfaceController {
     
     @IBAction func saveObservation() {
         saveToFirebase()
-    }
+    } */
 }

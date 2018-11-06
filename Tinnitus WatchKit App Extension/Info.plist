@@ -4,10 +4,6 @@
 <dict>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>$(DEVELOPMENT_LANGUAGE)</string>
-	<key>Privacy – Location Always Usage Description : I need location</key>
-	<string>We need to know your current position, to monitorize tinnitus.</string>
-	<key>Privacy – Location When In Use Usage Description : I need location</key>
-	<string>We need to know your current position, to monitorize tinnitus.</string>
 	<key>CFBundleDisplayName</key>
 	<string>Tinnitus WatchKit Extension</string>
 	<key>CFBundleExecutable</key>
@@ -29,7 +25,7 @@
 		<key>NSExtensionAttributes</key>
 		<dict>
 			<key>WKAppBundleIdentifier</key>
-			<string>dtuelk.Tinnitus.watchkitapp</string>
+			<string>dtu.Tinnitus.watchkitapp</string>
 		</dict>
 		<key>NSExtensionPointIdentifier</key>
 		<string>com.apple.watchkit</string>
@@ -39,6 +35,10 @@
 	<key>NSLocationAlwaysUsageDescription</key>
 	<string>We need to know your current position, to monitorize tinnitus.</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>We need to know your current position, to monitorize tinnitus.</string>
+	<key>Privacy – Location Always Usage Description : I need location</key>
+	<string>We need to know your current position, to monitorize tinnitus.</string>
+	<key>Privacy – Location When In Use Usage Description : I need location</key>
 	<string>We need to know your current position, to monitorize tinnitus.</string>
 	<key>UIBackgroundModes</key>
 	<array>
