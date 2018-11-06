@@ -13,39 +13,7 @@ import GoogleMaps
 import WatchConnectivity
 import CoreLocation
 
-class MapViewController: UIViewController, WCSessionDelegate, CLLocationManagerDelegate, GMSMapViewDelegate {
-    
-    /**
-     This determines whether the phone is actively connected to the watch.
-     If the activationState is active, do nothing. If the activation state is inactive,
-     temporarily disable location streaming by modifying the UI.
-     */
-    @available(iOS 9.3, *)
-    func session(_ session: WCSession, activationDidCompleteWith activationState: WCSessionActivationState, error: Error?) {
-        DispatchQueue.main.async {
-            if activationState == .notActivated || activationState == .inactive {
-                
-            }
-        }
-    }
-    
-    
-    @available(iOS 9.3, *)
-    func sessionDidBecomeInactive(_ session: WCSession) {
-        
-    }
-    
-    @available(iOS 9.3, *)
-    func sessionDidDeactivate(_ session: WCSession) {
-        
-    }
-    
-    @available(iOS 9.0, *)
-    func sessionWatchStateDidChange(_ session: WCSession) {
-        
-    }
-    
-    
+class MapViewController: UIViewController, GMSMapViewDelegate {
     // MARK: Properties
     
     /// Default WatchConnectivity session for communicating with the watch.
@@ -71,15 +39,21 @@ class MapViewController: UIViewController, WCSessionDelegate, CLLocationManagerD
      */
     var sessionMessageTimer = Timer()
     
-    // MARK: Localized String Convenience
+    var currentLocation: CLLocation?
+    var zoomLevel: Float = 12.0
+//    var zoomLevel: Float = 15.0
     
-    private var ref: DatabaseReference!
-    private var observations: NSDictionary!
-    private var mapView: GMSMapView!
-    private var heatmapLayer: GMUHeatmapTileLayer!
+    // A default location to use when location permission is not granted.
+    let defaultLocation = CLLocation(latitude: 55.676098, longitude: 12.568337)
     
-    private var gradientColors = [UIColor.green, UIColor.red]
-    private var gradientStartPoints = [0.2, 1.0] as? [NSNumber]
+    var ref: DatabaseReference!
+    var observations: NSDictionary!
+    var mapView: GMSMapView!
+    var heatmapLayer: GMUHeatmapTileLayer!
+    
+    var gradientColors = [UIColor.green, UIColor.red]
+    var gradientStartPoints = [0.2, 1.0]
+    
     
     // MARK: Initialization
     
@@ -94,18 +68,6 @@ class MapViewController: UIViewController, WCSessionDelegate, CLLocationManagerD
         commonInit()
     }
     
-    /**
-     Responds to the button press by either starting or stopping location updates
-     depending on the current state.
-     */
-    /*@IBAction func startStopUpdatingLocation(sender: AnyObject) {
-     if isUpdatingLocation.isEqual(true) {
-     stopUpdatingLocation(commandedFromPhone: true)
-     }
-     else {
-     startUpdatingLocationAllowingBackground(commandedFromPhone: true)
-     }
-     }*/
     @objc func startStopUpdatingLocation() {
         if isUpdatingLocation {
             stopUpdatingLocation(commandedFromPhone: true)
@@ -126,7 +88,6 @@ class MapViewController: UIViewController, WCSessionDelegate, CLLocationManagerD
      into the background.
      */
     func commonInit() {
-        
         // Initialize the `WCSession` and the `CLLocationManager`.
         session().delegate = self
         session().activate()
@@ -138,26 +99,41 @@ class MapViewController: UIViewController, WCSessionDelegate, CLLocationManagerD
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
-//        print(UIDevice.current.name)
-    
+        loadHeatMap()
+        
         self.ref = Database.database().reference()
+        readFromDatabase()
+    }
+    
+    func loadHeatMap() {
+        // Initialize the location manager.
+        manager.desiredAccuracy = kCLLocationAccuracyBest
+        manager.requestAlwaysAuthorization()
+        manager.distanceFilter = 50
+        manager.startUpdatingLocation()
+        manager.delegate = self
+        
+        let camera = GMSCameraPosition.camera(withLatitude: defaultLocation.coordinate.latitude,
+                                              longitude: defaultLocation.coordinate.longitude,
+                                              zoom: zoomLevel)
+        mapView = GMSMapView.map(withFrame: view.bounds, camera: camera)
+        mapView.settings.myLocationButton = true
+        mapView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        mapView.isMyLocationEnabled = true
+        
+        // Add the map to the view, hide it until we've got a location update.
+        view.addSubview(mapView)
+        mapView.isHidden = true
+        
+        mapView.delegate = self
+        self.view = mapView
+        
         heatmapLayer = GMUHeatmapTileLayer()
         heatmapLayer.radius = 80
         heatmapLayer.opacity = 0.8
         heatmapLayer.gradient = GMUGradient(colors: gradientColors,
-                                            startPoints: gradientStartPoints!,
+                                            startPoints: gradientStartPoints as [NSNumber],
                                             colorMapSize: 256)
-        readFromDatabase()
-    }
-
-    override func loadView() {
-        let camera = GMSCameraPosition.camera(withLatitude: 55.695689833791086,
-                                              longitude: 12.538195107338126,
-                                              zoom: 13)
-        mapView = GMSMapView.map(withFrame: .zero, camera: camera)
-        mapView.delegate = self
-        self.view = mapView
-//        self.mapView = mapView
     }
     
     func readFromDatabase() {
@@ -172,11 +148,13 @@ class MapViewController: UIViewController, WCSessionDelegate, CLLocationManagerD
                 let lat:String! = element.value(forKey: "latitude") as? String
                 let lng:String! = element.value(forKey: "longitude") as? String
                 
-                let position = CLLocationCoordinate2D(latitude: Double(lat) ?? 0.0, longitude: Double(lng)  ?? 0.0)
+                let savedLocation =
+                    CLLocation(latitude: Double(lat) ?? self.defaultLocation.coordinate.latitude,
+                               longitude: Double(lng) ?? self.defaultLocation.coordinate.longitude)
+                
+                let position = CLLocationCoordinate2D(latitude: savedLocation.coordinate.latitude, longitude: savedLocation.coordinate.longitude)
                 let coords = GMUWeightedLatLng(coordinate: position, intensity: 1.0)
                 list.append(coords)
-//                let marker = GMSMarker(position: position)
-//                marker.map = self.mapView
             }
             
             // Add the latlngs to the heatmap layer.
@@ -218,9 +196,7 @@ class MapViewController: UIViewController, WCSessionDelegate, CLLocationManagerD
         }
         
         manager.allowsBackgroundLocationUpdates = true
-        
         manager.startUpdatingLocation()
-        
         sessionMessageTimer = Timer.scheduledTimer(timeInterval: 5, target: self, selector: #selector(MapViewController.sendLocationCount), userInfo: nil, repeats: true)
     }
     
@@ -249,12 +225,75 @@ class MapViewController: UIViewController, WCSessionDelegate, CLLocationManagerD
         }
         
         manager.stopUpdatingLocation()
-        
         manager.allowsBackgroundLocationUpdates = false
     }
     
+    /**
+     Send the current cumulative location to the watch and reset the batch
+     count to zero.
+     */
+    @objc func sendLocationCount() {
+        do {
+            try self.session().updateApplicationContext([
+                MessageKey.locationCount.rawValue: String(self.receivedLocationCount) as AnyObject
+                ])
+            
+            locationBatchCount = 0
+        }
+        catch let error as NSError {
+            print("Error when updating application context \(error).")
+        }
+    }
+}
+
+// Delegates to handle events for the location manager.
+extension MapViewController: CLLocationManagerDelegate {
+    /**
+     Increases that location count by the number of locations received by the
+     manager. Updates the batch count with the added locations.
+     */
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        receivedLocationCount = receivedLocationCount + locations.count
+        locationBatchCount = locationBatchCount + locations.count
+        
+        let location: CLLocation = locations.last!
+        let camera = GMSCameraPosition.camera(withLatitude: location.coordinate.latitude,
+                                              longitude: location.coordinate.longitude,
+                                              zoom: zoomLevel)
+        
+        if mapView.isHidden {
+            mapView.isHidden = false
+            mapView.camera = camera
+        } else {
+            mapView.animate(to: camera)
+        }
+    }
     
+    // Handle authorization for the location manager.
+    func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
+        switch status {
+        case .restricted:
+            print("Location access was restricted.")
+        case .denied:
+            print("User denied access to location.")
+            // Display the map using the default location.
+            mapView.isHidden = false
+        case .notDetermined:
+            print("Location status not determined.")
+        case .authorizedAlways: fallthrough
+        case .authorizedWhenInUse:
+            print("Location status is OK.")
+        }
+    }
     
+    /// Log any errors to the console.
+    func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
+        manager.stopUpdatingLocation()
+        print("Error occured: \(error.localizedDescription).")
+    }
+}
+
+extension MapViewController: WCSessionDelegate {
     /**
      On the receipt of a message, check for expected commands.
      
@@ -298,34 +337,32 @@ class MapViewController: UIViewController, WCSessionDelegate, CLLocationManagerD
     }
     
     /**
-     Send the current cumulative location to the watch and reset the batch
-     count to zero.
+     This determines whether the phone is actively connected to the watch.
+     If the activationState is active, do nothing. If the activation state is inactive,
+     temporarily disable location streaming by modifying the UI.
      */
-    @objc func sendLocationCount() {
-        do {
-            try self.session().updateApplicationContext([
-                MessageKey.locationCount.rawValue: String(self.receivedLocationCount) as AnyObject
-                ])
-            
-            locationBatchCount = 0
-        }
-        catch let error as NSError {
-            print("Error when updating application context \(error).")
+    @available(iOS 9.3, *)
+    func session(_ session: WCSession, activationDidCompleteWith activationState: WCSessionActivationState, error: Error?) {
+        DispatchQueue.main.async {
+            if activationState == .notActivated || activationState == .inactive {
+                
+            }
         }
     }
     
-    /**
-     Increases that location count by the number of locations received by the
-     manager. Updates the batch count with the added locations.
-     */
-    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        receivedLocationCount = receivedLocationCount + locations.count
-        locationBatchCount = locationBatchCount + locations.count
+    
+    @available(iOS 9.3, *)
+    func sessionDidBecomeInactive(_ session: WCSession) {
+        
     }
     
-    /// Log any errors to the console.
-    func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
-        print("Error occured: \(error.localizedDescription).")
+    @available(iOS 9.3, *)
+    func sessionDidDeactivate(_ session: WCSession) {
+        
+    }
+    
+    @available(iOS 9.0, *)
+    func sessionWatchStateDidChange(_ session: WCSession) {
+        
     }
 }
-

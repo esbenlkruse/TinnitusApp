@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="g7W-ug-0iQ">
-    <device id="retina5_9" orientation="portrait">
+    <device id="retina5_5" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
@@ -14,11 +14,11 @@
             <objects>
                 <viewController title="Histogram" id="Qtr-pO-mIn" customClass="HistogramViewController" customModule="Tinnitus" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="OJR-4D-xdI">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1Df-bd-L9N" userLabel="Bar Chart" customClass="BarChart" customModule="Tinnitus" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="73" width="375" height="665"/>
+                                <rect key="frame" x="20" y="20" width="375" height="665"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
@@ -26,7 +26,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="hvg-f0-Ci9"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item 2" id="3gW-sT-52u" userLabel="Timeline"/>
+                    <tabBarItem key="tabBarItem" title="Timeline" image="baseline_timeline_black_24pt" id="3gW-sT-52u" userLabel="Timeline"/>
                     <connections>
                         <outlet property="barChart" destination="1Df-bd-L9N" id="5BM-eF-jRx"/>
                     </connections>
@@ -40,12 +40,12 @@
             <objects>
                 <viewController title="Map" id="AeI-QA-HhC" customClass="MapViewController" customModule="Tinnitus" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="vxd-em-IfX">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="0jf-JF-Uuo"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Map" id="5KX-kr-AP7" userLabel="Map"/>
+                    <tabBarItem key="tabBarItem" title="Map" image="baseline_map_black_24pt" id="5KX-kr-AP7" userLabel="Map"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="u2k-3o-der" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -70,4 +70,8 @@
             <point key="canvasLocation" x="436" y="1946"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="baseline_map_black_24pt" width="72" height="72"/>
+        <image name="baseline_timeline_black_24pt" width="72" height="72"/>
+    </resources>
 </document>
