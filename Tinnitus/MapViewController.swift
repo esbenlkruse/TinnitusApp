@@ -55,6 +55,9 @@ class MapViewController: UIViewController, GMSMapViewDelegate {
     var gradientColors = [UIColor.green, UIColor.red]
     var gradientStartPoints = [0.2, 1.0]
     
+    let userName = UIDevice.current.name.split(separator: " ").first.map(String.init)
+//    let userName = "Charlottes"
+    
     // MARK: Initialization
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
@@ -145,18 +148,22 @@ class MapViewController: UIViewController, GMSMapViewDelegate {
             dateFormatter.dateFormat = "dd-MM-yyyy HH:mm:ss"
             dateFormatter.locale = Locale(identifier: "dk_DA")
             
-            // Get user value
             self.observations = snapshot.value as? NSDictionary
 
             // Year
             for (key, _) in self.observations {
                 let element:NSObject = self.observations[key] as! NSObject
                 
-                let timestamp:String! = element.value(forKey: "timestamp") as? String
-                let obsTime = dateFormatter.date(from: timestamp)
-                
-                if (calendar.isDate(obsTime!, equalTo: date, toGranularity: .year)) {
-                    coords.append(self.saveCoords(obj: element))
+                let obsDevice:String! = element.value(forKey: "deviceName") as? String
+                let obsUserName = obsDevice.split(separator: " ").first.map(String.init)
+
+                if (obsUserName == self.userName) {
+                    let timestamp:String! = element.value(forKey: "timestamp") as? String
+                    let obsTime = dateFormatter.date(from: timestamp)
+                    
+                    if (calendar.isDate(obsTime!, equalTo: date, toGranularity: .year)) {
+                        coords.append(self.saveCoords(obj: element))
+                    }
                 }
             }
 
@@ -266,8 +273,13 @@ class MapViewController: UIViewController, GMSMapViewDelegate {
                 let timestamp:String! = element.value(forKey: "timestamp") as? String
                 let obsTime = dateFormatter.date(from: timestamp)
                 
-                if (calendar.isDate(obsTime!, equalTo: date, toGranularity: .weekOfYear)) {
-                    coords.append(saveCoords(obj: element))
+                let obsDevice:String! = element.value(forKey: "deviceName") as? String
+                let obsUserName = obsDevice.split(separator: " ").first.map(String.init)
+                
+                if (obsUserName == self.userName) {
+                    if (calendar.isDate(obsTime!, equalTo: date, toGranularity: .weekOfYear)) {
+                        coords.append(saveCoords(obj: element))
+                    }
                 }
             }
             
@@ -280,8 +292,13 @@ class MapViewController: UIViewController, GMSMapViewDelegate {
                 let timestamp:String! = element.value(forKey: "timestamp") as? String
                 let obsTime = dateFormatter.date(from: timestamp)
                 
-                if (calendar.isDate(obsTime!, equalTo: date, toGranularity: .month)) {
-                    coords.append(saveCoords(obj: element))
+                let obsDevice:String! = element.value(forKey: "deviceName") as? String
+                let obsUserName = obsDevice.split(separator: " ").first.map(String.init)
+                
+                if (obsUserName == self.userName) {
+                    if (calendar.isDate(obsTime!, equalTo: date, toGranularity: .month)) {
+                        coords.append(saveCoords(obj: element))
+                    }
                 }
             }
             
@@ -294,8 +311,13 @@ class MapViewController: UIViewController, GMSMapViewDelegate {
                 let timestamp:String! = element.value(forKey: "timestamp") as? String
                 let obsTime = dateFormatter.date(from: timestamp)
                 
-                if (calendar.isDate(obsTime!, equalTo: date, toGranularity: .year)) {
-                    coords.append(saveCoords(obj: element))
+                let obsDevice:String! = element.value(forKey: "deviceName") as? String
+                let obsUserName = obsDevice.split(separator: " ").first.map(String.init)
+                
+                if (obsUserName == self.userName) {
+                    if (calendar.isDate(obsTime!, equalTo: date, toGranularity: .year)) {
+                        coords.append(saveCoords(obj: element))
+                    }
                 }
             }
             
@@ -308,8 +330,13 @@ class MapViewController: UIViewController, GMSMapViewDelegate {
                 let timestamp:String! = element.value(forKey: "timestamp") as? String
                 let obsTime = dateFormatter.date(from: timestamp)
                 
-                if (calendar.isDate(obsTime!, equalTo: date, toGranularity: .year)) {
-                    coords.append(saveCoords(obj: element))
+                let obsDevice:String! = element.value(forKey: "deviceName") as? String
+                let obsUserName = obsDevice.split(separator: " ").first.map(String.init)
+                
+                if (obsUserName == self.userName) {
+                    if (calendar.isDate(obsTime!, equalTo: date, toGranularity: .year)) {
+                        coords.append(saveCoords(obj: element))
+                    }
                 }
             }
             
