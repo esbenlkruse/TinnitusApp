@@ -15,6 +15,7 @@ import CoreLocation
 
 class MapViewController: UIViewController, GMSMapViewDelegate {
     // MARK: Properties
+    @IBOutlet weak var TimeController: UISegmentedControl!
     
     /// Default WatchConnectivity session for communicating with the watch.
     let session = WCSession.default
@@ -54,9 +55,7 @@ class MapViewController: UIViewController, GMSMapViewDelegate {
     var gradientColors = [UIColor.green, UIColor.red]
     var gradientStartPoints = [0.2, 1.0]
     
-    
     // MARK: Initialization
-    
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         commonInit()
@@ -126,7 +125,7 @@ class MapViewController: UIViewController, GMSMapViewDelegate {
         mapView.isHidden = true
         
         mapView.delegate = self
-        self.view = mapView
+        view.bringSubview(toFront: TimeController)
         
         heatmapLayer = GMUHeatmapTileLayer()
         heatmapLayer.radius = 80
@@ -138,27 +137,31 @@ class MapViewController: UIViewController, GMSMapViewDelegate {
     
     func readFromDatabase() {
         self.ref.child("observations").observeSingleEvent(of: .value, with: { (snapshot) in
-            var list = [GMUWeightedLatLng]()
+            var coords = [GMUWeightedLatLng]()
+            
+            let date = Date()
+            let calendar = Calendar.current
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateFormat = "dd-MM-yyyy HH:mm:ss"
+            dateFormatter.locale = Locale(identifier: "dk_DA")
             
             // Get user value
             self.observations = snapshot.value as? NSDictionary
-            
+
+            // Year
             for (key, _) in self.observations {
                 let element:NSObject = self.observations[key] as! NSObject
-                let lat:String! = element.value(forKey: "latitude") as? String
-                let lng:String! = element.value(forKey: "longitude") as? String
                 
-                let savedLocation =
-                    CLLocation(latitude: Double(lat) ?? self.defaultLocation.coordinate.latitude,
-                               longitude: Double(lng) ?? self.defaultLocation.coordinate.longitude)
+                let timestamp:String! = element.value(forKey: "timestamp") as? String
+                let obsTime = dateFormatter.date(from: timestamp)
                 
-                let position = CLLocationCoordinate2D(latitude: savedLocation.coordinate.latitude, longitude: savedLocation.coordinate.longitude)
-                let coords = GMUWeightedLatLng(coordinate: position, intensity: 1.0)
-                list.append(coords)
+                if (calendar.isDate(obsTime!, equalTo: date, toGranularity: .year)) {
+                    coords.append(self.saveCoords(obj: element))
+                }
             }
-            
+
             // Add the latlngs to the heatmap layer.
-            self.heatmapLayer.weightedData = list
+            self.heatmapLayer.weightedData = coords
             self.heatmapLayer.map = self.mapView
         }) { (error) in
             print(error.localizedDescription)
@@ -244,6 +247,99 @@ class MapViewController: UIViewController, GMSMapViewDelegate {
             print("Error when updating application context \(error).")
         }
     }
+    
+    @IBAction func TimeChanged(_ sender: UISegmentedControl) {
+        var coords = [GMUWeightedLatLng]()
+        
+        let date = Date()
+        let calendar = Calendar.current
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "dd-MM-yyyy HH:mm:ss"
+        dateFormatter.locale = Locale(identifier: "dk_DA")
+        
+        switch TimeController.selectedSegmentIndex {
+        case 0:
+            // Week
+            for (key, _) in self.observations {
+                let element:NSObject = self.observations[key] as! NSObject
+                
+                let timestamp:String! = element.value(forKey: "timestamp") as? String
+                let obsTime = dateFormatter.date(from: timestamp)
+                
+                if (calendar.isDate(obsTime!, equalTo: date, toGranularity: .weekOfYear)) {
+                    coords.append(saveCoords(obj: element))
+                }
+            }
+            
+            break
+        case 1:
+            // Month
+            for (key, _) in self.observations {
+                let element:NSObject = self.observations[key] as! NSObject
+                
+                let timestamp:String! = element.value(forKey: "timestamp") as? String
+                let obsTime = dateFormatter.date(from: timestamp)
+                
+                if (calendar.isDate(obsTime!, equalTo: date, toGranularity: .month)) {
+                    coords.append(saveCoords(obj: element))
+                }
+            }
+            
+            break
+        case 2:
+            // Year
+            for (key, _) in self.observations {
+                let element:NSObject = self.observations[key] as! NSObject
+                
+                let timestamp:String! = element.value(forKey: "timestamp") as? String
+                let obsTime = dateFormatter.date(from: timestamp)
+                
+                if (calendar.isDate(obsTime!, equalTo: date, toGranularity: .year)) {
+                    coords.append(saveCoords(obj: element))
+                }
+            }
+            
+            break
+        default:
+            // Year
+            for (key, _) in self.observations {
+                let element:NSObject = self.observations[key] as! NSObject
+                
+                let timestamp:String! = element.value(forKey: "timestamp") as? String
+                let obsTime = dateFormatter.date(from: timestamp)
+                
+                if (calendar.isDate(obsTime!, equalTo: date, toGranularity: .year)) {
+                    coords.append(saveCoords(obj: element))
+                }
+            }
+            
+            break
+        }
+        
+        // Clear heatmap layer.
+        self.heatmapLayer.map = nil
+        
+        // Add the latlngs to the heatmap layer.
+        self.heatmapLayer.weightedData = coords
+        self.heatmapLayer.map = self.mapView
+    }
+    
+    func saveCoords(obj: NSObject) -> GMUWeightedLatLng {
+        let lat:String! = obj.value(forKey: "latitude") as? String
+        let lng:String! = obj.value(forKey: "longitude") as? String
+        
+        let savedLocation = CLLocation(
+            latitude: Double(lat) ?? self.defaultLocation.coordinate.latitude,
+            longitude: Double(lng) ?? self.defaultLocation.coordinate.longitude)
+        
+        let position = CLLocationCoordinate2D(
+            latitude: savedLocation.coordinate.latitude,
+            longitude: savedLocation.coordinate.longitude)
+        
+        let coord = GMUWeightedLatLng(coordinate: position, intensity: 1.0)
+        
+        return coord;
+    }
 }
 
 // Delegates to handle events for the location manager.
@@ -260,6 +356,9 @@ extension MapViewController: CLLocationManagerDelegate {
         let camera = GMSCameraPosition.camera(withLatitude: location.coordinate.latitude,
                                               longitude: location.coordinate.longitude,
                                               zoom: zoomLevel)
+//        let camera = GMSCameraPosition.camera(withLatitude: defaultLocation.coordinate.latitude,
+//                                              longitude: defaultLocation.coordinate.longitude,
+//                                              zoom: zoomLevel)
         
         if mapView.isHidden {
             mapView.isHidden = false
