@@ -380,12 +380,12 @@ extension MapViewController: CLLocationManagerDelegate {
         locationBatchCount = locationBatchCount + locations.count
         
         let location: CLLocation = locations.last!
-//        let camera = GMSCameraPosition.camera(withLatitude: location.coordinate.latitude,
-//                                              longitude: location.coordinate.longitude,
-//                                              zoom: zoomLevel)
-        let camera = GMSCameraPosition.camera(withLatitude: defaultLocation.coordinate.latitude,
-                                              longitude: defaultLocation.coordinate.longitude,
+        let camera = GMSCameraPosition.camera(withLatitude: location.coordinate.latitude,
+                                              longitude: location.coordinate.longitude,
                                               zoom: zoomLevel)
+//        let camera = GMSCameraPosition.camera(withLatitude: defaultLocation.coordinate.latitude,
+//                                              longitude: defaultLocation.coordinate.longitude,
+//                                              zoom: zoomLevel)
         
         if mapView.isHidden {
             mapView.isHidden = false
