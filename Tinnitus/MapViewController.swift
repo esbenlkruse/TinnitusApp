@@ -55,8 +55,8 @@ class MapViewController: UIViewController, GMSMapViewDelegate {
     var gradientColors = [UIColor.green, UIColor.red]
     var gradientStartPoints = [0.2, 1.0]
     
-//    let userName = UIDevice.current.name.split(separator: " ").first.map(String.init)
-    let userName = "Charlottes"
+    let userName = UIDevice.current.name.split(separator: " ").first.map(String.init)
+//    let userName = "Charlottes"
     
     // MARK: Initialization
     required init?(coder aDecoder: NSCoder) {

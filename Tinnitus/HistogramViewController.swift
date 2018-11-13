@@ -15,8 +15,8 @@ class HistogramViewController: UIViewController {
     @IBOutlet weak var barChart: BarChart!
     var observations: NSDictionary!
     var ref: DatabaseReference!
-//    let userName = UIDevice.current.name.split(separator: " ").first.map(String.init)
-    let userName = "Charlottes"
+    let userName = UIDevice.current.name.split(separator: " ").first.map(String.init)
+//    let userName = "Charlottes"
     
     
     override func viewDidLoad() {
