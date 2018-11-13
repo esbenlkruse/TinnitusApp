@@ -75,7 +75,7 @@ class HistogramViewController: UIViewController {
                 }
             }
             
-            let height: Float = Float(value) / 50.0
+            let height: Float = Float(value) / 15.0
             
             let formatter = DateFormatter()
             formatter.dateFormat = "EEE"
@@ -109,7 +109,6 @@ class HistogramViewController: UIViewController {
     }
     
     @IBAction func TimeChanged(_ sender: Any) {
-        
         switch TimeController.selectedSegmentIndex {
         case 0:
             // Day
