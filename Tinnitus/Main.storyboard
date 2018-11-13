@@ -18,18 +18,21 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1Df-bd-L9N" userLabel="Bar Chart" customClass="BarChart" customModule="Tinnitus" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="76" width="414" height="549"/>
+                                <rect key="frame" x="0.0" y="76" width="375" height="542"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
-                            <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="8gc-Ou-9jb">
-                                <rect key="frame" x="78" y="31" width="218" height="29"/>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="top" segmentControlStyle="plain" translatesAutoresizingMaskIntoConstraints="NO" id="8gc-Ou-9jb" userLabel="TimeController">
+                                <rect key="frame" x="76" y="29" width="223" height="29"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <segments>
                                     <segment title="Day"/>
+                                    <segment title="Week"/>
                                     <segment title="Month"/>
-                                    <segment title="Year"/>
                                 </segments>
+                                <connections>
+                                    <action selector="TimeChanged:" destination="Qtr-pO-mIn" eventType="valueChanged" id="3ps-sQ-6xt"/>
+                                </connections>
                             </segmentedControl>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -37,12 +40,13 @@
                     </view>
                     <tabBarItem key="tabBarItem" title="Timeline" image="baseline_timeline_black_24pt" id="3gW-sT-52u" userLabel="Timeline"/>
                     <connections>
+                        <outlet property="TimeController" destination="8gc-Ou-9jb" id="xI7-lF-cfN"/>
                         <outlet property="barChart" destination="1Df-bd-L9N" id="5BM-eF-jRx"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DMt-z3-4KC" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1749.2753623188407" y="2374.7282608695655"/>
+            <point key="canvasLocation" x="1748" y="2374.362818590705"/>
         </scene>
         <!--Map-->
         <scene sceneID="KdR-GY-0ie">
@@ -52,13 +56,13 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="2" translatesAutoresizingMaskIntoConstraints="NO" id="lEg-O3-kxv" userLabel="TimeController">
-                                <rect key="frame" x="78" y="30" width="218" height="29"/>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="top" segmentControlStyle="plain" translatesAutoresizingMaskIntoConstraints="NO" id="lEg-O3-kxv" userLabel="TimeController">
+                                <rect key="frame" x="75" y="30" width="224" height="29"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <segments>
+                                    <segment title="Day"/>
                                     <segment title="Week"/>
                                     <segment title="Month"/>
-                                    <segment title="Year"/>
                                 </segments>
                                 <connections>
                                     <action selector="TimeChanged:" destination="AeI-QA-HhC" eventType="valueChanged" id="g3I-yO-dt5"/>

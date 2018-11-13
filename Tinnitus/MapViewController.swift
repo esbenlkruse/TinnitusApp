@@ -55,8 +55,8 @@ class MapViewController: UIViewController, GMSMapViewDelegate {
     var gradientColors = [UIColor.green, UIColor.red]
     var gradientStartPoints = [0.2, 1.0]
     
-    let userName = UIDevice.current.name.split(separator: " ").first.map(String.init)
-//    let userName = "Charlottes"
+//    let userName = UIDevice.current.name.split(separator: " ").first.map(String.init)
+    let userName = "Charlottes"
     
     // MARK: Initialization
     required init?(coder aDecoder: NSCoder) {
@@ -266,6 +266,25 @@ class MapViewController: UIViewController, GMSMapViewDelegate {
         
         switch TimeController.selectedSegmentIndex {
         case 0:
+            // Day
+            for (key, _) in self.observations {
+                let element:NSObject = self.observations[key] as! NSObject
+                
+                let timestamp:String! = element.value(forKey: "timestamp") as? String
+                let obsTime = dateFormatter.date(from: timestamp)
+                
+                let obsDevice:String! = element.value(forKey: "deviceName") as? String
+                let obsUserName = obsDevice.split(separator: " ").first.map(String.init)
+                
+                if (obsUserName == self.userName) {
+                    if (calendar.isDate(obsTime!, equalTo: date, toGranularity: .day)) {
+                        coords.append(saveCoords(obj: element))
+                    }
+                }
+            }
+            
+            break
+        case 1:
             // Week
             for (key, _) in self.observations {
                 let element:NSObject = self.observations[key] as! NSObject
@@ -284,7 +303,7 @@ class MapViewController: UIViewController, GMSMapViewDelegate {
             }
             
             break
-        case 1:
+        case 2:
             // Month
             for (key, _) in self.observations {
                 let element:NSObject = self.observations[key] as! NSObject
@@ -297,25 +316,6 @@ class MapViewController: UIViewController, GMSMapViewDelegate {
                 
                 if (obsUserName == self.userName) {
                     if (calendar.isDate(obsTime!, equalTo: date, toGranularity: .month)) {
-                        coords.append(saveCoords(obj: element))
-                    }
-                }
-            }
-            
-            break
-        case 2:
-            // Year
-            for (key, _) in self.observations {
-                let element:NSObject = self.observations[key] as! NSObject
-                
-                let timestamp:String! = element.value(forKey: "timestamp") as? String
-                let obsTime = dateFormatter.date(from: timestamp)
-                
-                let obsDevice:String! = element.value(forKey: "deviceName") as? String
-                let obsUserName = obsDevice.split(separator: " ").first.map(String.init)
-                
-                if (obsUserName == self.userName) {
-                    if (calendar.isDate(obsTime!, equalTo: date, toGranularity: .year)) {
                         coords.append(saveCoords(obj: element))
                     }
                 }
@@ -380,12 +380,12 @@ extension MapViewController: CLLocationManagerDelegate {
         locationBatchCount = locationBatchCount + locations.count
         
         let location: CLLocation = locations.last!
-        let camera = GMSCameraPosition.camera(withLatitude: location.coordinate.latitude,
-                                              longitude: location.coordinate.longitude,
-                                              zoom: zoomLevel)
-//        let camera = GMSCameraPosition.camera(withLatitude: defaultLocation.coordinate.latitude,
-//                                              longitude: defaultLocation.coordinate.longitude,
+//        let camera = GMSCameraPosition.camera(withLatitude: location.coordinate.latitude,
+//                                              longitude: location.coordinate.longitude,
 //                                              zoom: zoomLevel)
+        let camera = GMSCameraPosition.camera(withLatitude: defaultLocation.coordinate.latitude,
+                                              longitude: defaultLocation.coordinate.longitude,
+                                              zoom: zoomLevel)
         
         if mapView.isHidden {
             mapView.isHidden = false
