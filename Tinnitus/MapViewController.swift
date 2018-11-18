@@ -57,6 +57,10 @@ class MapViewController: UIViewController, GMSMapViewDelegate {
     
     var userName = getUserName(deviceName: UIDevice.current.name)
     
+    let calendar = Calendar.current
+    var now = Date()
+    let dateFormatter = DateFormatter()
+    
     // MARK: Initialization
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
@@ -145,30 +149,10 @@ class MapViewController: UIViewController, GMSMapViewDelegate {
         self.ref.child("observations").observeSingleEvent(of: .value, with: { (snapshot) in
             var coords = [GMUWeightedLatLng]()
             
-            let date = Date()
-            let calendar = Calendar.current
-            let dateFormatter = DateFormatter()
-            dateFormatter.dateFormat = "dd-MM-yyyy HH:mm:ss"
-            dateFormatter.locale = Locale(identifier: "dk_DA")
-            
             self.observations = snapshot.value as? NSDictionary
 
-            // Year
-            for (key, _) in self.observations {
-                let element:NSObject = self.observations[key] as! NSObject
-                
-                let obsDevice:String! = element.value(forKey: "deviceName") as? String
-                let obsUserName = getUserName(deviceName: obsDevice)
-
-                if (obsUserName == self.userName) {
-                    let timestamp:String! = element.value(forKey: "timestamp") as? String
-                    let obsTime = dateFormatter.date(from: timestamp)
-                    
-                    if (calendar.isDate(obsTime!, equalTo: date, toGranularity: .year)) {
-                        coords.append(self.saveCoords(obj: element))
-                    }
-                }
-            }
+            // Month
+            coords = self.populateDataMonth()
 
             // Add the latlngs to the heatmap layer.
             self.heatmapLayer.weightedData = coords
@@ -261,87 +245,25 @@ class MapViewController: UIViewController, GMSMapViewDelegate {
     @IBAction func TimeChanged(_ sender: UISegmentedControl) {
         var coords = [GMUWeightedLatLng]()
         
-        let date = Date()
-        let calendar = Calendar.current
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "dd-MM-yyyy HH:mm:ss"
-        dateFormatter.locale = Locale(identifier: "dk_DA")
-        
         switch TimeController.selectedSegmentIndex {
         case 0:
             // Day
-            for (key, _) in self.observations {
-                let element:NSObject = self.observations[key] as! NSObject
-                
-                let timestamp:String! = element.value(forKey: "timestamp") as? String
-                let obsTime = dateFormatter.date(from: timestamp)
-                
-                let obsDevice:String! = element.value(forKey: "deviceName") as? String
-                let obsUserName = getUserName(deviceName: obsDevice)
-                
-                if (obsUserName == self.userName) {
-                    if (calendar.isDate(obsTime!, equalTo: date, toGranularity: .day)) {
-                        coords.append(saveCoords(obj: element))
-                    }
-                }
-            }
+            coords = populateDataDay()
             
             break
         case 1:
             // Week
-            for (key, _) in self.observations {
-                let element:NSObject = self.observations[key] as! NSObject
-                
-                let timestamp:String! = element.value(forKey: "timestamp") as? String
-                let obsTime = dateFormatter.date(from: timestamp)
-                
-                let obsDevice:String! = element.value(forKey: "deviceName") as? String
-                let obsUserName = getUserName(deviceName: obsDevice)
-                
-                if (obsUserName == self.userName) {
-                    if (calendar.isDate(obsTime!, equalTo: date, toGranularity: .weekOfYear)) {
-                        coords.append(saveCoords(obj: element))
-                    }
-                }
-            }
+            coords = populateDataWeek()
             
             break
         case 2:
             // Month
-            for (key, _) in self.observations {
-                let element:NSObject = self.observations[key] as! NSObject
-                
-                let timestamp:String! = element.value(forKey: "timestamp") as? String
-                let obsTime = dateFormatter.date(from: timestamp)
-                
-                let obsDevice:String! = element.value(forKey: "deviceName") as? String
-                let obsUserName = getUserName(deviceName: obsDevice)
-                
-                if (obsUserName == self.userName) {
-                    if (calendar.isDate(obsTime!, equalTo: date, toGranularity: .month)) {
-                        coords.append(saveCoords(obj: element))
-                    }
-                }
-            }
+            coords = populateDataMonth()
             
             break
         default:
-            // Year
-            for (key, _) in self.observations {
-                let element:NSObject = self.observations[key] as! NSObject
-                
-                let timestamp:String! = element.value(forKey: "timestamp") as? String
-                let obsTime = dateFormatter.date(from: timestamp)
-                
-                let obsDevice:String! = element.value(forKey: "deviceName") as? String
-                let obsUserName = getUserName(deviceName: obsDevice)
-                
-                if (obsUserName == self.userName) {
-                    if (calendar.isDate(obsTime!, equalTo: date, toGranularity: .year)) {
-                        coords.append(saveCoords(obj: element))
-                    }
-                }
-            }
+            // Month
+            coords = populateDataMonth()
             
             break
         }
@@ -352,6 +274,110 @@ class MapViewController: UIViewController, GMSMapViewDelegate {
         // Add the latlngs to the heatmap layer.
         self.heatmapLayer.weightedData = coords
         self.heatmapLayer.map = self.mapView
+    }
+    
+    func populateDataDay() -> [GMUWeightedLatLng] {
+        var coords = [GMUWeightedLatLng]()
+        
+        dateFormatter.dateFormat = "dd-MM-yyyy HH:mm:ss"
+        dateFormatter.locale = Locale(identifier: "dk_DA")
+        
+        let numHours = 24
+        
+        if (IsDebug) {
+            // Day with test data
+            let year = calendar.component(.year, from: now)
+            let dateComponentsTestData = DateComponents(year: year, month: 10, day: 27, hour: 22)
+            now = calendar.date(from: dateComponentsTestData)!
+        }
+        
+        for i in 1..<(numHours + 1) {
+            let iterateDate = calendar.date(byAdding: .hour, value: i - numHours, to: now)!
+            
+            for (key, _) in self.observations {
+                let element:NSObject = self.observations[key] as! NSObject
+                
+                let obsDevice:String! = element.value(forKey: "deviceName") as? String
+                let obsUserName = getUserName(deviceName: obsDevice)
+                
+                if (obsUserName == self.userName) {
+                    let timestamp:String! = element.value(forKey: "timestamp") as? String
+                    let obsTime = dateFormatter.date(from: timestamp)
+                    
+                    if (calendar.isDate(obsTime!, equalTo: iterateDate, toGranularity: .hour)) {
+                        coords.append(saveCoords(obj: element))
+                    }
+                }
+            }
+        }
+        return coords
+    }
+    
+    func populateDataWeek() -> [GMUWeightedLatLng] {
+        var coords = [GMUWeightedLatLng]()
+        
+        dateFormatter.dateFormat = "dd-MM-yyyy HH:mm:ss"
+        dateFormatter.locale = Locale(identifier: "dk_DA")
+        
+        let numDays = 7
+        
+        if (IsDebug) {
+            // Week with test data
+            let year = calendar.component(.year, from: now)
+            let dateComponentsTestData = DateComponents(year: year, month: 11, day: 2, hour: 5)
+            now = calendar.date(from: dateComponentsTestData)!
+        }
+        
+        for i in 1..<(numDays + 1) {
+            let iterateDate = calendar.date(byAdding: .day, value: i - numDays, to: now)!
+            
+            for (key, _) in self.observations {
+                let element:NSObject = self.observations[key] as! NSObject
+                
+                let obsDevice:String! = element.value(forKey: "deviceName") as? String
+                let obsUserName = getUserName(deviceName: obsDevice)
+                
+                if (obsUserName == self.userName) {
+                    let timestamp:String! = element.value(forKey: "timestamp") as? String
+                    let obsTime = dateFormatter.date(from: timestamp)
+                    
+                    if (calendar.isDate(obsTime!, equalTo: iterateDate, toGranularity: .day)) {
+                        coords.append(saveCoords(obj: element))
+                    }
+                }
+            }
+        }
+        return coords
+    }
+    
+    func populateDataMonth() -> [GMUWeightedLatLng] {
+        var coords = [GMUWeightedLatLng]()
+        
+        dateFormatter.dateFormat = "dd-MM-yyyy HH:mm:ss"
+        dateFormatter.locale = Locale(identifier: "dk_DA")
+        
+        let numWeeks = 5
+        
+        for i in 1..<(numWeeks + 1) {
+            let iterateDate = calendar.date(byAdding: .weekOfYear, value: i - numWeeks, to: now)!
+            
+            for (key, _) in self.observations {
+                let element:NSObject = self.observations[key] as! NSObject
+                
+                let obsDevice:String! = element.value(forKey: "deviceName") as? String
+                let obsUserName = getUserName(deviceName: obsDevice)
+                
+                if (obsUserName == self.userName) {
+                    let timestamp:String! = element.value(forKey: "timestamp") as? String
+                    let obsTime = dateFormatter.date(from: timestamp)
+                    
+                    if (calendar.isDate(obsTime!, equalTo: iterateDate, toGranularity: .weekOfYear)) {
+                        coords.append(saveCoords(obj: element))
+                    }
+                }
+            }
+        }
+        return coords
     }
     
     func saveCoords(obj: NSObject) -> GMUWeightedLatLng {
