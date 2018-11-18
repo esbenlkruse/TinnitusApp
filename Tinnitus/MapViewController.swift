@@ -55,8 +55,7 @@ class MapViewController: UIViewController, GMSMapViewDelegate {
     var gradientColors = [UIColor.green, UIColor.red]
     var gradientStartPoints = [0.2, 1.0]
     
-    let userName = UIDevice.current.name.split(separator: " ").first.map(String.init)
-//    let userName = "Charlottes"
+    var userName = getUserName(deviceName: UIDevice.current.name)
     
     // MARK: Initialization
     required init?(coder aDecoder: NSCoder) {
@@ -100,6 +99,10 @@ class MapViewController: UIViewController, GMSMapViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        
+        if (IsDebug) {
+            self.userName = "Charlottes".lowercased()
+        }
         
         loadHeatMap()
         
@@ -155,7 +158,7 @@ class MapViewController: UIViewController, GMSMapViewDelegate {
                 let element:NSObject = self.observations[key] as! NSObject
                 
                 let obsDevice:String! = element.value(forKey: "deviceName") as? String
-                let obsUserName = obsDevice.split(separator: " ").first.map(String.init)
+                let obsUserName = getUserName(deviceName: obsDevice)
 
                 if (obsUserName == self.userName) {
                     let timestamp:String! = element.value(forKey: "timestamp") as? String
@@ -274,7 +277,7 @@ class MapViewController: UIViewController, GMSMapViewDelegate {
                 let obsTime = dateFormatter.date(from: timestamp)
                 
                 let obsDevice:String! = element.value(forKey: "deviceName") as? String
-                let obsUserName = obsDevice.split(separator: " ").first.map(String.init)
+                let obsUserName = getUserName(deviceName: obsDevice)
                 
                 if (obsUserName == self.userName) {
                     if (calendar.isDate(obsTime!, equalTo: date, toGranularity: .day)) {
@@ -293,7 +296,7 @@ class MapViewController: UIViewController, GMSMapViewDelegate {
                 let obsTime = dateFormatter.date(from: timestamp)
                 
                 let obsDevice:String! = element.value(forKey: "deviceName") as? String
-                let obsUserName = obsDevice.split(separator: " ").first.map(String.init)
+                let obsUserName = getUserName(deviceName: obsDevice)
                 
                 if (obsUserName == self.userName) {
                     if (calendar.isDate(obsTime!, equalTo: date, toGranularity: .weekOfYear)) {
@@ -312,7 +315,7 @@ class MapViewController: UIViewController, GMSMapViewDelegate {
                 let obsTime = dateFormatter.date(from: timestamp)
                 
                 let obsDevice:String! = element.value(forKey: "deviceName") as? String
-                let obsUserName = obsDevice.split(separator: " ").first.map(String.init)
+                let obsUserName = getUserName(deviceName: obsDevice)
                 
                 if (obsUserName == self.userName) {
                     if (calendar.isDate(obsTime!, equalTo: date, toGranularity: .month)) {
@@ -331,7 +334,7 @@ class MapViewController: UIViewController, GMSMapViewDelegate {
                 let obsTime = dateFormatter.date(from: timestamp)
                 
                 let obsDevice:String! = element.value(forKey: "deviceName") as? String
-                let obsUserName = obsDevice.split(separator: " ").first.map(String.init)
+                let obsUserName = getUserName(deviceName: obsDevice)
                 
                 if (obsUserName == self.userName) {
                     if (calendar.isDate(obsTime!, equalTo: date, toGranularity: .year)) {
@@ -380,12 +383,15 @@ extension MapViewController: CLLocationManagerDelegate {
         locationBatchCount = locationBatchCount + locations.count
         
         let location: CLLocation = locations.last!
-        let camera = GMSCameraPosition.camera(withLatitude: location.coordinate.latitude,
+        var camera = GMSCameraPosition.camera(withLatitude: location.coordinate.latitude,
                                               longitude: location.coordinate.longitude,
                                               zoom: zoomLevel)
-//        let camera = GMSCameraPosition.camera(withLatitude: defaultLocation.coordinate.latitude,
-//                                              longitude: defaultLocation.coordinate.longitude,
-//                                              zoom: zoomLevel)
+    
+        if (IsDebug) {
+            camera = GMSCameraPosition.camera(withLatitude: defaultLocation.coordinate.latitude,
+                                                  longitude: defaultLocation.coordinate.longitude,
+                                                  zoom: zoomLevel)
+        }
         
         if mapView.isHidden {
             mapView.isHidden = false
@@ -412,7 +418,7 @@ extension MapViewController: CLLocationManagerDelegate {
         }
     }
     
-    /// Log any errors to the console.
+    // Log any errors to the console.
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
         manager.stopUpdatingLocation()
         print("Error occured: \(error.localizedDescription).")

@@ -23,3 +23,6 @@ enum MessageCommand: String {
     case startUpdatingLocation
     case stopUpdatingLocation
 }
+
+/// Set to false if sent to test users.
+let IsDebug = false
