@@ -7,9 +7,9 @@
 	<key>AD_UNIT_ID_FOR_INTERSTITIAL_TEST</key>
 	<string>ca-app-pub-3940256099942544/4411468910</string>
 	<key>CLIENT_ID</key>
-	<string>305068401575-pq5j0nfc7rekjc6g59rja64mcmi21uus.apps.googleusercontent.com</string>
+	<string>305068401575-gk6pla7ocbf02pao3ju9gor80t0sib47.apps.googleusercontent.com</string>
 	<key>REVERSED_CLIENT_ID</key>
-	<string>com.googleusercontent.apps.305068401575-pq5j0nfc7rekjc6g59rja64mcmi21uus</string>
+	<string>com.googleusercontent.apps.305068401575-gk6pla7ocbf02pao3ju9gor80t0sib47</string>
 	<key>API_KEY</key>
 	<string>AIzaSyBSHQIkj5Pv0S95zou30swq93cW3x_tutM</string>
 	<key>GCM_SENDER_ID</key>
@@ -17,7 +17,7 @@
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
-	<string>dtuelk.Tinnitus</string>
+	<string>dtu.tinnitustest</string>
 	<key>PROJECT_ID</key>
 	<string>tinnitus-dfcd4</string>
 	<key>STORAGE_BUCKET</key>
@@ -33,7 +33,7 @@
 	<key>IS_SIGNIN_ENABLED</key>
 	<true></true>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:305068401575:ios:d0fd7becd2e9ceb2</string>
+	<string>1:305068401575:ios:532365395632ab00</string>
 	<key>DATABASE_URL</key>
 	<string>https://tinnitus-dfcd4.firebaseio.com</string>
 </dict>
