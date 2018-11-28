@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder.WatchKit.Storyboard" version="3.0" toolsVersion="14460.31" targetRuntime="watchKit" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="AgC-eL-Hgc">
-    <device id="watch40" orientation="portrait">
+    <device id="watch42" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
@@ -12,21 +12,27 @@
         <!--Tinnitus Interface Controller-->
         <scene sceneID="aou-V4-d1y">
             <objects>
-                <controller identifier="TinnitusInterfaceController" title="Tinnitus Interface Controller" id="AgC-eL-Hgc" customClass="RequestLocationInterfaceController" customModule="Tinnitus_WatchKit_App_Extension">
+                <controller identifier="TinnitusInterfaceController" title="Tinnitus Interface Controller" id="AgC-eL-Hgc" customClass="TinnitusInterfaceController" customModule="Tinnitus_WatchKit_App_Extension">
                     <items>
-                        <button width="1" alignment="left" verticalAlignment="center" title="Save" id="Ees-Ga-cak">
+                        <label width="136" height="49" alignment="left" text="How annoying is your Tinnitus?" numberOfLines="3" id="Uk7-rl-eFC"/>
+                        <slider width="1" alignment="left" verticalAlignment="center" value="2" maximum="3" steps="3" id="HMr-cS-2AQ">
                             <connections>
-                                <action selector="requestLocation" destination="AgC-eL-Hgc" id="ZCx-hV-Ppa"/>
+                                <action selector="tinnitusLevelChanged:" destination="AgC-eL-Hgc" id="tWe-eg-82d"/>
+                            </connections>
+                        </slider>
+                        <button width="1" alignment="center" verticalAlignment="bottom" title="Save" id="Ees-Ga-cak">
+                            <connections>
+                                <action selector="saveObservation" destination="AgC-eL-Hgc" id="zAC-UH-CYa"/>
                             </connections>
                         </button>
-                        <label height="108" alignment="left" text="Press save, when you are annoyed of Tinnitus" numberOfLines="3" id="Uk7-rl-eFC"/>
                     </items>
                     <connections>
-                        <outlet property="requestLocationButton" destination="Ees-Ga-cak" id="jAU-3F-z3J"/>
+                        <outlet property="errorLabel" destination="Uk7-rl-eFC" id="RkD-sd-eL9"/>
+                        <outlet property="saveObservationButton" destination="Ees-Ga-cak" id="XyL-GN-1eJ"/>
                     </connections>
                 </controller>
             </objects>
-            <point key="canvasLocation" x="220" y="345"/>
+            <point key="canvasLocation" x="219.69230769230771" y="344.79487179487182"/>
         </scene>
         <!--Static Notification Interface Controller-->
         <scene sceneID="AEw-b0-oYE">
@@ -73,7 +79,7 @@
                     </items>
                 </controller>
             </objects>
-            <point key="canvasLocation" x="600" y="345"/>
+            <point key="canvasLocation" x="453" y="-41"/>
         </scene>
         <!--Observation Not Saved Controller-->
         <scene sceneID="NqY-D4-cva">
@@ -89,7 +95,7 @@
                     </items>
                 </controller>
             </objects>
-            <point key="canvasLocation" x="220" y="-196"/>
+            <point key="canvasLocation" x="-19" y="-41"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
