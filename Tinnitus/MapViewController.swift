@@ -41,8 +41,8 @@ class MapViewController: UIViewController, GMSMapViewDelegate {
     var sessionMessageTimer = Timer()
     
     var currentLocation: CLLocation?
-    var zoomLevel: Float = 12.0
-//    var zoomLevel: Float = 15.0
+    var zoomLevel: Float = 9.0
+    // var zoomLevel: Float = 15.0
     
     // A default location to use when location permission is not granted.
     let defaultLocation = CLLocation(latitude: 55.676098, longitude: 12.568337)
