@@ -6,16 +6,16 @@ import WatchConnectivity
 import CoreLocation
 
 class MapViewController: UIViewController, GMSMapViewDelegate {
-    // MARK: Properties
+
     @IBOutlet weak var TimeController: UISegmentedControl!
     
-    /// Default WatchConnectivity session for communicating with the watch.
+    // Default WatchConnectivity session for communicating with the watch.
     let session = WCSession.default
     
-    /// Location manager used to start and stop updating location.
+    // Location manager used to start and stop updating location.
     let manager = CLLocationManager()
     
-    /// Indicates whether the location manager is updating location.
+    // Indicates whether the location manager is updating location.
     var isUpdatingLocation = false
     
     var currentLocation: CLLocation?
@@ -38,7 +38,7 @@ class MapViewController: UIViewController, GMSMapViewDelegate {
     var now = Date()
     let dateFormatter = DateFormatter()
     
-    // MARK: Initialization
+
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         commonInit()
