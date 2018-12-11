@@ -30,19 +30,6 @@ class TinnitusInterfaceController: WKInterfaceController, CLLocationManagerDeleg
     
     
     // MARK: Localized String Convenience
-    
-    var interfaceTitle: String {
-        return NSLocalizedString("Request", comment: "Indicates that this interface exemplifies requesting location from the watch")
-    }
-    
-    var requestLocationTitle: String {
-        return NSLocalizedString("Request Location", comment: "Button title to indicate that pressing the button will cause the location manager to request location")
-    }
-    
-    var cancelTitle: String {
-        return NSLocalizedString("Cancel", comment: "Cancel the current action")
-    }
-    
     var savingTitle: String {
         return NSLocalizedString("Saving...", comment: "Saving the current action")
     }
@@ -54,19 +41,7 @@ class TinnitusInterfaceController: WKInterfaceController, CLLocationManagerDeleg
     var unexpectedText: String {
         return NSLocalizedString("Unexpected authorization status.", comment: "Text to indicate authorization status is an unexpected value")
     }
-    
-    var latitudeResetText: String {
-        return NSLocalizedString("<latitude reset>", comment: "String indicating that no latitude is shown to the user due to a timer reset")
-    }
-    
-    var longitudeResetText: String {
-        return NSLocalizedString("<longitude reset>", comment: "String indicating that no longitude is shown to the user due to a timer reset")
-    }
-    
-    var errorResetText: String {
-        return NSLocalizedString("<no error>", comment: "String indicating that no error is shown to the user")
-    }
-    
+
     // MARK: Interface Controller
     
     override func awake(withContext context: Any?) {
@@ -162,7 +137,7 @@ class TinnitusInterfaceController: WKInterfaceController, CLLocationManagerDeleg
     
     // MARK: CLLocationManagerDelegate Methods
     
-    /**
+    /*
      When the location manager receives new locations, display the latitude and
      longitude of the latest location and restart the timers.
      */
@@ -179,7 +154,7 @@ class TinnitusInterfaceController: WKInterfaceController, CLLocationManagerDeleg
         }
     }
     
-    /**
+    /*
      When the location manager receives an error, display the error and restart the timers.
      */
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
@@ -191,7 +166,7 @@ class TinnitusInterfaceController: WKInterfaceController, CLLocationManagerDeleg
         }
     }
     
-    /**
+    /*
      Only request location if the authorization status changed to an authorization
      level that permits requesting location.
      */

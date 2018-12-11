@@ -14,7 +14,6 @@
 		F267A0D121AEB52600853356 /* TinnitusConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = F274D529218ED07800F41A37 /* TinnitusConstants.swift */; };
 		F274D52A218ED07800F41A37 /* TinnitusConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = F274D529218ED07800F41A37 /* TinnitusConstants.swift */; };
 		F274D52C218ED30400F41A37 /* TinnitusInterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F274D52B218ED30400F41A37 /* TinnitusInterfaceController.swift */; };
-		F274D52E218ED32F00F41A37 /* TinnitusComplicationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F274D52D218ED32F00F41A37 /* TinnitusComplicationController.swift */; };
 		F274D530218ED33700F41A37 /* ErrorController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F274D52F218ED33700F41A37 /* ErrorController.swift */; };
 		F27557CE21A1734F00668B6D /* TinnitusFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F27557CD21A1734F00668B6D /* TinnitusFunctions.swift */; };
 		F27E98862189DC63000D192E /* Interface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F27E98882189DC63000D192E /* Interface.storyboard */; };
@@ -95,7 +94,6 @@
 		F25FEF592191B048006AB0EC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F274D529218ED07800F41A37 /* TinnitusConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TinnitusConstants.swift; sourceTree = "<group>"; };
 		F274D52B218ED30400F41A37 /* TinnitusInterfaceController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TinnitusInterfaceController.swift; sourceTree = "<group>"; };
-		F274D52D218ED32F00F41A37 /* TinnitusComplicationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TinnitusComplicationController.swift; sourceTree = "<group>"; };
 		F274D52F218ED33700F41A37 /* ErrorController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ErrorController.swift; sourceTree = "<group>"; };
 		F27557CD21A1734F00668B6D /* TinnitusFunctions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TinnitusFunctions.swift; sourceTree = "<group>"; };
 		F27E98872189DC63000D192E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Interface.storyboard; sourceTree = "<group>"; };
@@ -242,7 +240,6 @@
 			isa = PBXGroup;
 			children = (
 				F274D52F218ED33700F41A37 /* ErrorController.swift */,
-				F274D52D218ED32F00F41A37 /* TinnitusComplicationController.swift */,
 				F274D52B218ED30400F41A37 /* TinnitusInterfaceController.swift */,
 				F28852802189BFE000CE6F21 /* Assets.xcassets */,
 				F288527C2189BFE000CE6F21 /* ExtensionDelegate.swift */,
@@ -513,7 +510,6 @@
 			files = (
 				F267A0D121AEB52600853356 /* TinnitusConstants.swift in Sources */,
 				F28852892189BFE000CE6F21 /* ObservationSavedController.swift in Sources */,
-				F274D52E218ED32F00F41A37 /* TinnitusComplicationController.swift in Sources */,
 				F274D52C218ED30400F41A37 /* TinnitusInterfaceController.swift in Sources */,
 				F28852862189BFE000CE6F21 /* NotificationController.swift in Sources */,
 				F288528A2189BFE000CE6F21 /* ObservationNotSavedController.swift in Sources */,

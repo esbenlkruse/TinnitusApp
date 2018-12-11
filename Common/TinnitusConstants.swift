@@ -10,6 +10,7 @@
  */
 
 /// Keys used by the dictionaries when communicating between the watch and the phone.
+
 enum MessageKey: String {
     case command
     case stateUpdate
