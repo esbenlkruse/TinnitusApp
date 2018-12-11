@@ -1,11 +1,3 @@
-//
-//  TinnitusInterfaceController.swift
-//  Tinnitus WatchKit App Extension
-//
-//  Created by Esben Kruse on 31/10/2018.
-//  Copyright © 2018 Google. All rights reserved.
-//
-
 import WatchKit
 import Foundation
 import Alamofire
@@ -14,22 +6,19 @@ import Alamofire
 class TinnitusInterfaceController: WKInterfaceController, CLLocationManagerDelegate {
     
     
-    // MARK: Properties
-    
-    /// Location manager to request authorization and location updates.
+    // Location manager to request authorization and location updates.
     let manager = CLLocationManager()
     
-    /// Flag indicating whether the manager is requesting the user's location.
+    // Flag indicating whether the manager is requesting the user's location.
     var isRequestingLocation = false
     
     var tinnitusLevel = 2
     @IBOutlet var saveObservationButton: WKInterfaceButton!
     
-    /// Label to display an error if the location manager finishes with an error.
+    // Label to display an error if the location manager finishes with an error.
     @IBOutlet var errorLabel: WKInterfaceLabel!
     
-    
-    // MARK: Localized String Convenience
+
     var savingTitle: String {
         return NSLocalizedString("Saving...", comment: "Saving the current action")
     }
@@ -42,8 +31,6 @@ class TinnitusInterfaceController: WKInterfaceController, CLLocationManagerDeleg
         return NSLocalizedString("Unexpected authorization status.", comment: "Text to indicate authorization status is an unexpected value")
     }
 
-    // MARK: Interface Controller
-    
     override func awake(withContext context: Any?) {
         super.awake(withContext: context)
         print(WKInterfaceDevice.current().name)
@@ -62,8 +49,6 @@ class TinnitusInterfaceController: WKInterfaceController, CLLocationManagerDeleg
         super.didDeactivate()
     }
     
-    
-    // MARK: Button Actions
     
     @IBAction func saveObservation() {
         guard !isRequestingLocation else {
@@ -135,7 +120,6 @@ class TinnitusInterfaceController: WKInterfaceController, CLLocationManagerDeleg
     }
     
     
-    // MARK: CLLocationManagerDelegate Methods
     
     /*
      When the location manager receives new locations, display the latitude and

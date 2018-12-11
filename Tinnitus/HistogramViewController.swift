@@ -1,11 +1,3 @@
-//
-//  HistogramViewController.swift
-//  Tinnitus
-//
-//  Created by Esben Kruse on 25/10/2018.
-//  Copyright © 2018 Esben Kruse. All rights reserved.
-//
-
 import UIKit
 import Firebase
 

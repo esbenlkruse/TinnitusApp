@@ -1,11 +1,3 @@
-//
-//  MapViewController.swift
-//  Tinnitus
-//
-//  Created by Esben Kruse on 19/09/2018.
-//  Copyright © 2018 Esben Kruse. All rights reserved.
-//
-
 import Foundation
 import UIKit
 import Firebase
@@ -26,23 +18,8 @@ class MapViewController: UIViewController, GMSMapViewDelegate {
     /// Indicates whether the location manager is updating location.
     var isUpdatingLocation = false
     
-    /// Cumulative count of received locations.
-    //var receivedLocationCount: AnyObject = 0
-    var receivedLocationCount = 0
-    
-    /// The number of locations that will be sent in a batch to the watch.
-    var locationBatchCount = 0
-    
-    /**
-     Timer to send the cumulative count to the watch.
-     To avoid polluting IDS traffic, its better to send batch updates to the watch
-     instead of sending the updates as they arrive.
-     */
-    var sessionMessageTimer = Timer()
-    
     var currentLocation: CLLocation?
     var zoomLevel: Float = 9.0
-    // var zoomLevel: Float = 15.0
     
     // A default location to use when location permission is not granted.
     let defaultLocation = CLLocation(latitude: 55.676098, longitude: 12.568337)
@@ -82,7 +59,7 @@ class MapViewController: UIViewController, GMSMapViewDelegate {
         }
     }
     
-    /**
+    /*
      Sets the delegates and activate the `WCSession`.
      
      The `WCSession` needs to be activated in the init methods so that when the
@@ -162,7 +139,7 @@ class MapViewController: UIViewController, GMSMapViewDelegate {
         }
     }
     
-    /**
+    /*
      Starts updating location and allows the app to receive background location
      updates.
      
@@ -194,10 +171,9 @@ class MapViewController: UIViewController, GMSMapViewDelegate {
         
         manager.allowsBackgroundLocationUpdates = true
         manager.startUpdatingLocation()
-        sessionMessageTimer = Timer.scheduledTimer(timeInterval: 5, target: self, selector: #selector(MapViewController.sendLocationCount), userInfo: nil, repeats: true)
     }
     
-    /**
+    /*
      Informs the manager to stop updating location, invalidates the timer, and
      updates the view.
      
@@ -225,22 +201,10 @@ class MapViewController: UIViewController, GMSMapViewDelegate {
         manager.allowsBackgroundLocationUpdates = false
     }
     
-    /**
+    /*
      Send the current cumulative location to the watch and reset the batch
      count to zero.
      */
-    @objc func sendLocationCount() {
-        do {
-            try self.session().updateApplicationContext([
-                MessageKey.locationCount.rawValue: String(self.receivedLocationCount) as AnyObject
-                ])
-            
-            locationBatchCount = 0
-        }
-        catch let error as NSError {
-            print("Error when updating application context \(error).")
-        }
-    }
     
     @IBAction func TimeChanged(_ sender: UISegmentedControl) {
         var coords = [GMUWeightedLatLng]()
@@ -400,14 +364,12 @@ class MapViewController: UIViewController, GMSMapViewDelegate {
 
 // Delegates to handle events for the location manager.
 extension MapViewController: CLLocationManagerDelegate {
-    /**
+    /*
      Increases that location count by the number of locations received by the
      manager. Updates the batch count with the added locations.
      */
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        receivedLocationCount = receivedLocationCount + locations.count
-        locationBatchCount = locationBatchCount + locations.count
-        
+
         let location: CLLocation = locations.last!
         var camera = GMSCameraPosition.camera(withLatitude: location.coordinate.latitude,
                                               longitude: location.coordinate.longitude,
@@ -452,7 +414,7 @@ extension MapViewController: CLLocationManagerDelegate {
 }
 
 extension MapViewController: WCSessionDelegate {
-    /**
+    /*
      On the receipt of a message, check for expected commands.
      
      On a `startUpdatingLocation` command, inform the manager to start updating
@@ -494,7 +456,7 @@ extension MapViewController: WCSessionDelegate {
         }
     }
     
-    /**
+    /*
      This determines whether the phone is actively connected to the watch.
      If the activationState is active, do nothing. If the activation state is inactive,
      temporarily disable location streaming by modifying the UI.
