@@ -59,16 +59,7 @@ class MapViewController: UIViewController, GMSMapViewDelegate {
         }
     }
     
-    /*
-     Sets the delegates and activate the `WCSession`.
-     
-     The `WCSession` needs to be activated in the init methods so that when the
-     app is launched into the background when it wasn't previously running, the
-     session can still be activated allowing communication between the watch and
-     the phone. Activating the session in the `viewDidLoad()` method wont suffice
-     since the `viewDidLoad()` method will not be called if the app is launched
-     into the background.
-     */
+
     func commonInit() {
         // Initialize the `WCSession` and the `CLLocationManager`.
         session().delegate = self

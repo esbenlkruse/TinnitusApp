@@ -1,11 +1,3 @@
-//
-//  ExtensionDelegate.swift
-//  Tinnitus WatchKit Extension
-//
-//  Created by Esben Kruse on 19/09/2018.
-//  Copyright © 2018 Esben Kruse. All rights reserved.
-//
-
 import WatchKit
 
 class ExtensionDelegate: NSObject, WKExtensionDelegate {

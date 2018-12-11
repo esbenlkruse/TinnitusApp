@@ -1,11 +1,3 @@
-//
-//  ErrorController.swift
-//  Tinnitus WatchKit Extension
-//
-//  Created by Emma on 20/10/2018.
-//  Copyright © 2018 Esben Kruse. All rights reserved.
-//
-
 import WatchKit
 import Foundation
 

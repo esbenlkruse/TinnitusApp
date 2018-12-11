@@ -49,7 +49,6 @@ class TinnitusInterfaceController: WKInterfaceController, CLLocationManagerDeleg
         super.didDeactivate()
     }
     
-    
     @IBAction func saveObservation() {
         guard !isRequestingLocation else {
             manager.stopUpdatingLocation()
@@ -118,8 +117,6 @@ class TinnitusInterfaceController: WKInterfaceController, CLLocationManagerDeleg
     @IBAction func tinnitusLevelChanged(_ value: Float) {
         tinnitusLevel = Int(round(value))
     }
-    
-    
     
     /*
      When the location manager receives new locations, display the latitude and
